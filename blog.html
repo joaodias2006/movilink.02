@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - MoviLink</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h1>MoviLink</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="sobre.html" class="nav-link">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blog.html" class="nav-link active">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="equipe.html" class="nav-link">Equipe</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1 class="page-title">Blog MoviLink</h1>
+                <p class="page-subtitle">Conteúdos educativos sobre logística de forma clara e acessível</p>
+            </div>
+        </section>
+
+        <section class="blog-content">
+            <div class="container">
+                <div class="blog-filters">
+                    <h3>Categorias</h3>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-category="all">Todos</button>
+                        <button class="filter-btn" data-category="conceitos">Conceitos</button>
+                        <button class="filter-btn" data-category="metodologias">Metodologias</button>
+                        <button class="filter-btn" data-category="ferramentas">Ferramentas</button>
+                    </div>
+                </div>
+
+                <div class="blog-grid">
+                    <article class="blog-card" data-category="conceitos">
+                        <div class="blog-card-header">
+                            <div class="blog-icon">🔗</div>
+                            <span class="blog-category">Conceitos</span>
+                        </div>
+                        <h3 class="blog-title">
+                            <a href="posts/logistica-integrada.html">Logística Integrada: Unindo Todos os Processos</a>
+                        </h3>
+                        <p class="blog-excerpt">Descubra como a logística integrada pode revolucionar a eficiência da sua empresa, conectando todos os processos desde a fabricação até a entrega final.</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">15 de Dezembro, 2024</span>
+                            <span class="blog-read-time">5 min de leitura</span>
+                        </div>
+                        <div class="blog-tags">
+                            <span class="tag">Integração</span>
+                            <span class="tag">Eficiência</span>
+                            <span class="tag">Processos</span>
+                        </div>
+                    </article>
+
+                    <article class="blog-card" data-category="metodologias">
+                        <div class="blog-card-header">
+                            <div class="blog-icon">⏰</div>
+                            <span class="blog-category">Metodologias</span>
+                        </div>
+                        <h3 class="blog-title">
+                            <a href="posts/just-in-time.html">Just in Time: Produção no Momento Certo</a>
+                        </h3>
+                        <p class="blog-excerpt">Entenda como o sistema JIT revolucionou a indústria mundial, reduzindo estoques e aumentando a eficiência operacional.</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">12 de Dezembro, 2024</span>
+                            <span class="blog-read-time">7 min de leitura</span>
+                        </div>
+                        <div class="blog-tags">
+                            <span class="tag">JIT</span>
+                            <span class="tag">Toyota</span>
+                            <span class="tag">Estoque</span>
+                        </div>
+                    </article>
+
+                    <article class="blog-card" data-category="ferramentas">
+                        <div class="blog-card-header">
+                            <div class="blog-icon">📋</div>
+                            <span class="blog-category">Ferramentas</span>
+                        </div>
+                        <h3 class="blog-title">
+                            <a href="posts/kanban.html">Kanban: Visualizando o Fluxo de Trabalho</a>
+                        </h3>
+                        <p class="blog-excerpt">Aprenda a implementar o sistema Kanban para gerenciar projetos de forma visual e identificar gargalos no processo.</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">10 de Dezembro, 2024</span>
+                            <span class="blog-read-time">6 min de leitura</span>
+                        </div>
+                        <div class="blog-tags">
+                            <span class="tag">Kanban</span>
+                            <span class="tag">Visual</span>
+                            <span class="tag">Gestão</span>
+                        </div>
+                    </article>
+
+                    <article class="blog-card" data-category="metodologias">
+                        <div class="blog-card-header">
+                            <div class="blog-icon">📈</div>
+                            <span class="blog-category">Metodologias</span>
+                        </div>
+                        <h3 class="blog-title">
+                            <a href="posts/kaizen.html">Kaizen: A Filosofia da Melhoria Contínua</a>
+                        </h3>
+                        <p class="blog-excerpt">Explore como a filosofia Kaizen pode transformar sua organização através de pequenas melhorias constantes e envolvimento de todos.</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">8 de Dezembro, 2024</span>
+                            <span class="blog-read-time">8 min de leitura</span>
+                        </div>
+                        <div class="blog-tags">
+                            <span class="tag">Kaizen</span>
+                            <span class="tag">Melhoria</span>
+                            <span class="tag">Cultura</span>
+                        </div>
+                    </article>
+
+                    <article class="blog-card" data-category="ferramentas">
+                        <div class="blog-card-header">
+                            <div class="blog-icon">🧹</div>
+                            <span class="blog-category">Ferramentas</span>
+                        </div>
+                        <h3 class="blog-title">
+                            <a href="posts/5s.html">5S: Organizando o Ambiente de Trabalho</a>
+                        </h3>
+                        <p class="blog-excerpt">Descubra como a metodologia 5S pode transformar seu ambiente de trabalho, aumentando produtividade e qualidade.</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">5 de Dezembro, 2024</span>
+                            <span class="blog-read-time">6 min de leitura</span>
+                        </div>
+                        <div class="blog-tags">
+                            <span class="tag">5S</span>
+                            <span class="tag">Organização</span>
+                            <span class="tag">Produtividade</span>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="blog-sidebar">
+                    <div class="sidebar-widget">
+                        <h4>Conteúdos Populares</h4>
+                        <ul class="popular-posts">
+                            <li><a href="posts/just-in-time.html">Just in Time: Produção no Momento Certo</a></li>
+                            <li><a href="posts/kanban.html">Kanban: Visualizando o Fluxo de Trabalho</a></li>
+                            <li><a href="posts/logistica-integrada.html">Logística Integrada: Unindo Todos os Processos</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-widget">
+                        <h4>Formatos de Conteúdo</h4>
+                        <div class="content-formats">
+                            <div class="format-item">
+                                <span class="format-icon">📝</span>
+                                <span>Artigos</span>
+                            </div>
+                            <div class="format-item">
+                                <span class="format-icon">🎥</span>
+                                <span>Vídeos</span>
+                            </div>
+                            <div class="format-item">
+                                <span class="format-icon">🗺️</span>
+                                <span>Mapas Mentais</span>
+                            </div>
+                            <div class="format-item">
+                                <span class="format-icon">🎧</span>
+                                <span>Podcasts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MoviLink</h3>
+                    <p>Tornando a logística mais compreensível e atrativa para todos.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="equipe.html">Equipe</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Temas</h4>
+                    <ul>
+                        <li><a href="posts/logistica-integrada.html">Logística Integrada</a></li>
+                        <li><a href="posts/just-in-time.html">Just in Time</a></li>
+                        <li><a href="posts/kanban.html">Kanban</a></li>
+                        <li><a href="posts/kaizen.html">Kaizen</a></li>
+                        <li><a href="posts/5s.html">5S</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MoviLink. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+
