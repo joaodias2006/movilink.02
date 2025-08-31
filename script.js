@@ -484,4 +484,3 @@ const additionalCSS = `
 const styleSheet = document.createElement('style');
 styleSheet.textContent = additionalCSS;
 document.head.appendChild(styleSheet);
-
