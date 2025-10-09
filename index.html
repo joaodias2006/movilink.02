@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -44,27 +43,35 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <h1 class="hero-title">Descomplicando a <span class="highlight">Logística</span></h1>
-                    <p class="hero-subtitle">Transformamos conceitos complexos em conhecimento acessível através de conteúdos multimodais e educativos</p>
-                    <div class="hero-buttons">
-                        <a href="blog.html" class="btn btn-primary">Explorar Conteúdos</a>
-                        <a href="sobre.html" class="btn btn-secondary">Saiba Mais</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <div class="hero-graphic">
-                        <div class="logistics-icon">📦</div>
-                        <div class="arrow-flow">→</div>
-                        <div class="logistics-icon">🚛</div>
-                        <div class="arrow-flow">→</div>
-                        <div class="logistics-icon">🏪</div>
-                    </div>
-                </div>
+    <section class="hero">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Descomplicando a
+                <span class="palavras-em-rotacao">
+                    <span class="palavra ativa">Logística</span>
+                    <span class="palavra">Cadeia de Suprimentos</span>
+                    <span class="palavra">Gestão de Estoques</span>
+                    <span class="palavra">Processos Logísticos</span>
+                </span>
+            </h1>
+            <p class="hero-subtitle">Transformamos conceitos complexos em conhecimento acessível através de conteúdos multimodais e educativos</p>
+            <div class="hero-buttons">
+                <a href="blog.html" class="btn btn-primary">Explorar Conteúdos</a>
+                <a href="sobre.html" class="btn btn-secondary">Saiba Mais</a>
             </div>
-        </section>
+        </div>
+        <div class="hero-image">
+            <div class="hero-graphic">
+                <div class="logistics-icon">📦</div>
+                <div class="arrow-flow">→</div>
+                <div class="logistics-icon">🚛</div>
+                <div class="arrow-flow">→</div>
+                <div class="logistics-icon">🏪</div>
+            </div>
+        </div>
+    </div>
+</section>
 
         <!-- Features Section -->
         <section class="features">
@@ -95,6 +102,16 @@
                         <div class="feature-icon">🧹</div>
                         <h3>5S</h3>
                         <p>Metodologia para organização, limpeza e disciplina no trabalho</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📦</div>
+                        <h3>Cadeia de Suprimentos</h3>
+                        <p>Produção e entrega no momento exato, reduzindo estoques e custos</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <h3>Compras</h3>
+                        <p>Produção e entrega no momento exato, reduzindo estoques e custos</p>
                     </div>
                 </div>
             </div>
@@ -164,8 +181,29 @@
     </footer>
     
     <script src="js/script.js"></script>
+    <script src="js/texto-rotativo.js"></script>
 </body>
 </html>
+
+<script>
+// Código direto no HTML para teste
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Script carregado!');
+    const palavras = document.querySelectorAll('.palavras-em-rotacao .palavra');
+    console.log('Palavras encontradas:', palavras.length);
+    
+    if (palavras.length > 0) {
+        let indiceAtual = 0;
+        palavras[0].classList.add('ativa');
+        
+        setInterval(() => {
+            palavras.forEach(p => p.classList.remove('ativa'));
+            palavras[indiceAtual].classList.add('ativa');
+            indiceAtual = (indiceAtual + 1) % palavras.length;
+        }, 3000);
+    }
+});
+</script>
 
 <div vw class="enabled">
     <div vw-access-button class="active"></div>
