@@ -1263,29 +1263,231 @@ ul {
     background: #000;
 }
 
-.palavras-em-rotacao {
-    display: inline-block;
-    margin-left: 8px;
+/* Estilos específicos para a página de Compras */
+
+/* Seção de quadrinhos */
+.comics-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    margin: 40px 0;
+    border-radius: 12px;
 }
 
-.palavras-em-rotacao .palavra {
-    display: none;
-    color: var(--primary-blue);
+.comics-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.comics-title {
+    font-size: 2.5rem;
+    color: #1e5799;
+    margin-bottom: 15px;
     font-weight: 700;
 }
 
-.palavras-em-rotacao .palavra.ativa {
-    display: inline;
+.comics-subtitle {
+    font-size: 1.2rem;
+    color: #6c757d;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
 }
 
-/* Ajuste para mobile */
+.comics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.comic-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+.comic-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.comic-image {
+    height: 220px;
+    background: linear-gradient(135deg, #1e5799 0%, #207cca 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.comic-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.comic-icon {
+    font-size: 4rem;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+.comic-content {
+    padding: 25px;
+}
+
+.comic-title {
+    font-size: 1.4rem;
+    color: #1e5799;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.comic-description {
+    color: #555;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Seção de workflow */
+.comics-workflow {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.workflow-title {
+    font-size: 2rem;
+    color: #1e5799;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.workflow-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.workflow-step {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.workflow-step:hover {
+    transform: translateY(-5px);
+}
+
+.step-icon {
+    width: 70px;
+    height: 70px;
+    background: #e3f2fd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 1.8rem;
+    color: #1e5799;
+    font-weight: bold;
+}
+
+.step-title {
+    font-size: 1.2rem;
+    color: #1e5799;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Estilo para o CTA de vídeo */
+.video-cta {
+    margin-top: 20px;
+    padding: 20px;
+    background: var(--light-blue);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.video-cta h4 {
+    color: #1e5799;
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    display: inline-block;
+    background: #1e5799;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    background: #16457a;
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
-    .palavras-em-rotacao {
-        height: 70px;
-        margin-left: 5px;
+    .comics-grid {
+        grid-template-columns: 1fr;
     }
     
-    .hero-title {
-        font-size: 2.2rem;
+    .comics-title {
+        font-size: 2rem;
     }
+    
+    .workflow-steps {
+        grid-template-columns: 1fr;
+    }
+    
+    .comic-image {
+        height: 180px;
+    }
+    
+    .comic-icon {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .comics-section {
+        padding: 40px 0;
+        margin: 20px 0;
+    }
+    
+    .comics-title {
+        font-size: 1.8rem;
+    }
+    
+    .comics-subtitle {
+        font-size: 1rem;
+    }
+    
+    .comic-content {
+        padding: 20px;
+    }
+    
+    .comic-title {
+        font-size: 1.2rem;
+    }
+}
+
+.comic-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
