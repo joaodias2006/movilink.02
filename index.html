@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
 </head>
+
+<script src="js/animacao-logistica.js"></script>
+
 <body>
     <header class="header">
         <nav class="navbar">
@@ -42,20 +45,20 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-    <section class="hero">
+       <!-- Hero Section -->
+<!-- VERSÃO ALTERNATIVA - ABSOLUTA -->
+<section class="hero">
     <div class="hero-container">
         <div class="hero-content">
-            <h1 class="hero-title">
-                Descomplicando a
-                <span class="palavras-em-rotacao">
-                    <span class="palavra ativa">Logística</span>
-                    <span class="palavra">Cadeia de Suprimentos</span>
-                    <span class="palavra">Gestão de Estoques</span>
-                    <span class="palavra">Processos Logísticos</span>
-                </span>
-            </h1>
-            <p class="hero-subtitle">Transformamos conceitos complexos em conhecimento acessível através de conteúdos multimodais e educativos</p>
+            <div class="hero-titulo-container">
+                <h1 class="hero-title">
+                    Descomplicando a 
+                    <span id="palavra-digitando" class="palavra-destaque digitando"></span>
+                </h1>
+            </div>
+            <div class="hero-subtitle-container">
+                <p class="hero-subtitle">Transformamos conceitos complexos em conhecimento acessível através de conteúdos multimodais e educativos</p>
+            </div>
             <div class="hero-buttons">
                 <a href="blog.html" class="btn btn-primary">Explorar Conteúdos</a>
                 <a href="sobre.html" class="btn btn-secondary">Saiba Mais</a>
@@ -185,6 +188,38 @@
 </body>
 </html>
 
+<style>
+/* VERSÃO COM POSIÇÃO FIXA */
+.hero-titulo-container {
+    height: 120px; /* Altura fixa para o título */
+    display: flex;
+    align-items: center;
+}
+
+.hero-subtitle-container {
+    margin-top: 20px; /* Espaço fixo entre título e subtítulo */
+}
+
+.palavra-destaque {
+    color: var(--primary-blue);
+    font-weight: 700;
+    display: inline-block;
+    min-width: 250px; /* Largura suficiente para a palavra maior */
+    text-align: left;
+}
+
+.digitando {
+    border-right: 3px solid var(--primary-blue);
+    animation: piscar 0.7s infinite;
+}
+
+@keyframes piscar {
+    0%, 50% { border-color: var(--primary-blue); }
+    51%, 100% { border-color: transparent; }
+}
+</style>
+
+
 <script>
 // Código direto no HTML para teste
 document.addEventListener('DOMContentLoaded', function() {
@@ -201,6 +236,57 @@ document.addEventListener('DOMContentLoaded', function() {
             palavras[indiceAtual].classList.add('ativa');
             indiceAtual = (indiceAtual + 1) % palavras.length;
         }, 3000);
+    }
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('INICIANDO ANIMAÇÃO...');
+    
+    const elemento = document.getElementById('palavra-digitando');
+    const palavras = ['Logística', 'Cadeia de Suprimentos', 'Gestão de Estoques', 'Processos Logísticos'];
+    let palavraIndex = 0;
+    let caractereIndex = 0;
+    let digitando = true;
+    
+    if (elemento) {
+        console.log('Elemento de digitação encontrado!');
+        
+        function animar() {
+            const palavraAtual = palavras[palavraIndex];
+            
+            if (digitando) {
+                // Modo digitação
+                if (caractereIndex <= palavraAtual.length) {
+                    elemento.textContent = palavraAtual.substring(0, caractereIndex);
+                    caractereIndex++;
+                    setTimeout(animar, 100);
+                } else {
+                    // Terminou de digitar
+                    digitando = false;
+                    setTimeout(animar, 2000); // Pausa com texto completo
+                }
+            } else {
+                // Modo apagar
+                if (caractereIndex >= 0) {
+                    elemento.textContent = palavraAtual.substring(0, caractereIndex);
+                    caractereIndex--;
+                    setTimeout(animar, 50);
+                } else {
+                    // Terminou de apagar, próxima palavra
+                    digitando = true;
+                    palavraIndex = (palavraIndex + 1) % palavras.length;
+                    setTimeout(animar, 500);
+                }
+            }
+        }
+        
+        // Inicia a animação
+        animar();
+        
+    } else {
+        console.log('ERRO: Elemento não encontrado!');
     }
 });
 </script>
