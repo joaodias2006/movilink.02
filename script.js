@@ -479,30 +479,3 @@ const additionalCSS = `
     }
 }
 `;
-
-// Adicionar CSS adicional ao documento
-const styleSheet = document.createElement('style');
-styleSheet.textContent = additionalCSS;
-document.head.appendChild(styleSheet);
-
-document.addEventListener('DOMContentLoaded', function() {
-    const palavras = document.querySelectorAll('.palavras-em-rotacao .palavra');
-    
-    if (palavras.length > 0) {
-        let indiceAtual = 0;
-        
-        // Mostra a primeira palavra
-        palavras[0].classList.add('ativa');
-        
-        function trocarPalavra() {
-            // Esconde todas
-            palavras.forEach(p => p.classList.remove('ativa'));
-            // Mostra a atual
-            palavras[indiceAtual].classList.add('ativa');
-            // Próxima
-            indiceAtual = (indiceAtual + 1) % palavras.length;
-        }
-        
-        setInterval(trocarPalavra, 3000);
-    }
-});
