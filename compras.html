@@ -78,7 +78,7 @@
                         </div>
                     </section>
 
-                    <!-- SEÇÃO DE QUADRINHOS DE COMPRAS -->
+                    <!-- SEÇÃO DOS QUADRINHOS -->
                     <section class="comics-section">
                         <div class="container">
                             <div class="comics-header">
@@ -89,8 +89,8 @@
                             <div class="comics-grid">
                                 <!-- Quadrinho 1 -->
                                 <div class="comic-card">
-                                    <div class="comic-image">
-                                        <div class="comic-icon">📊</div>
+                                    <div class="comic-image" onclick="openModal('imagens/quadrinho1.jpg', 'Escolha dos Fornecedores')">
+                                        <img src="imagens/quadrinho1.jpeg" alt="Escolha dos fornecedores" class="comic-img">
                                     </div>
                                     <div class="comic-content">
                                         <h3 class="comic-title">Escolha dos Fornecedores</h3>
@@ -100,8 +100,8 @@
                                 
                                 <!-- Quadrinho 2 -->
                                 <div class="comic-card">
-                                    <div class="comic-image">
-                                        <div class="comic-icon">🚚</div>
+                                    <div class="comic-image" onclick="openModal('imagens/quadrinho2.jpg', 'Recolhimento e Armazenagem')">
+                                        <img src="imagens/quadrinho2.jpeg" alt="Recolhimento e armazenagem" class="comic-img">
                                     </div>
                                     <div class="comic-content">
                                         <h3 class="comic-title">Recolhimento e Armazenagem</h3>
@@ -111,71 +111,31 @@
                                 
                                 <!-- Quadrinho 3 -->
                                 <div class="comic-card">
-                                    <div class="comic-image">
-                                        <div class="comic-icon">📦</div>
+                                    <div class="comic-image" onclick="openModal('imagens/quadrinho3.jpg', 'Quantidades Ideais')">
+                                        <img src="imagens/quadrinho3.jpeg" alt="Quantidades ideais" class="comic-img">
                                     </div>
                                     <div class="comic-content">
                                         <h3 class="comic-title">Quantidades Ideais</h3>
                                         <p class="comic-description">Com dados de centenas de estados, efetuimos as quantidades ideais para cada correio.</p>
                                     </div>
                                 </div>
-                                
-                                <!-- Quadrinho 4 -->
-                                <div class="comic-card">
-                                    <div class="comic-image">
-                                        <div class="comic-icon">🤝</div>
-                                    </div>
-                                    <div class="comic-content">
-                                        <h3 class="comic-title">Trabalho em Conjunto</h3>
-                                        <p class="comic-description">Assim, Compras e Logística trabalham juntos para manter o fluxo sem falhar!</p>
-                                    </div>
-                                </div>
-                                
-                                <!-- Quadrinho 5 -->
-                                <div class="comic-card">
-                                    <div class="comic-image">
-                                        <div class="comic-icon">⚡</div>
-                                    </div>
-                                    <div class="comic-content">
-                                        <h3 class="comic-title">Otimização de Processos</h3>
-                                        <p class="comic-description">Continuamente buscamos melhorias para otimizar nossos processos de compras e logística.</p>
-                                    </div>
-                                </div>
-                                
-                                <!-- Quadrinho 6 -->
-                                <div class="comic-card">
-                                    <div class="comic-image">
-                                        <div class="comic-icon">📈</div>
-                                    </div>
-                                    <div class="comic-content">
-                                        <h3 class="comic-title">Resultados Positivos</h3>
-                                        <p class="comic-description">Nossa colaboração resulta em eficiência operacional e satisfação do cliente.</p>
-                                    </div>
-                                </div>
                             </div>
                             
-                            <div class="comics-workflow">
-                                <h3 class="workflow-title">Como Trabalhamos</h3>
-                                <div class="workflow-steps">
-                                    <div class="workflow-step">
-                                        <div class="step-icon">1</div>
-                                        <h4 class="step-title">Seleção</h4>
-                                        <p>Escolhemos os melhores fornecedores com base em critérios rigorosos.</p>
-                                    </div>
-                                    <div class="workflow-step">
-                                        <div class="step-icon">2</div>
-                                        <h4 class="step-title">Gestão</h4>
-                                        <p>Gerenciamos o recebimento e armazenamento de materiais de forma eficiente.</p>
-                                    </div>
-                                    <div class="workflow-step">
-                                        <div class="step-icon">3</div>
-                                        <h4 class="step-title">Distribuição</h4>
-                                        <p>Distribuímos as quantidades ideais para cada localidade com base em dados.</p>
-                                    </div>
+                            <div class="comics-conclusion">
+                                <div class="conclusion-content">
+                                    <h3 class="conclusion-title">Trabalho em Conjunto</h3>
+                                    <p class="conclusion-text">Assim, Compras e Logística trabalham juntos para manter o fluxo sem falhar!</p>
                                 </div>
                             </div>
                         </div>
                     </section>
+
+                    <!-- Modal para imagem ampliada -->
+                    <div id="imageModal" class="modal">
+                        <span class="modal-close" onclick="closeModal()">&times;</span>
+                        <img class="modal-content" id="modalImage">
+                        <div class="modal-caption" id="modalCaption"></div>
+                    </div>
 
                     <section class="post-section">
                         <h2>Pilares das Compras Estratégicas</h2>
@@ -282,6 +242,37 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script>
+        // Funções para o modal de imagem
+        function openModal(imageSrc, caption) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const captionText = document.getElementById('modalCaption');
+            
+            modal.style.display = 'block';
+            modalImg.src = imageSrc;
+            captionText.innerHTML = caption;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+        }
+
+        // Fechar modal clicando fora da imagem
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Fechar modal com a tecla ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
 
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
