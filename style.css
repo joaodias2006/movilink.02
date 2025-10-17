@@ -1307,6 +1307,8 @@ ul {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     border: 1px solid #e9ecef;
+    display: flex;
+    flex-direction: column;
 }
 
 .comic-card:hover {
@@ -1315,34 +1317,56 @@ ul {
 }
 
 .comic-image {
-    height: 220px;
-    background: linear-gradient(135deg, #1e5799 0%, #207cca 100%);
+    height: 200px;
+    background: #f8f9fa;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid #e9ecef;
 }
 
-.comic-image::before {
-    content: '';
+.comic-image:hover {
+    background: #e9ecef;
+}
+
+.comic-image:hover .comic-img {
+    transform: scale(1.05);
+}
+
+.comic-image:hover::after {
+    content: '🔍 Clique para ampliar';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.1);
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 87, 153, 0.9);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    z-index: 2;
 }
 
-.comic-icon {
-    font-size: 4rem;
-    color: white;
-    position: relative;
-    z-index: 2;
+.comic-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    padding: 15px;
 }
 
 .comic-content {
     padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .comic-title {
@@ -1350,6 +1374,7 @@ ul {
     color: #1e5799;
     margin-bottom: 12px;
     font-weight: 600;
+    line-height: 1.3;
 }
 
 .comic-description {
@@ -1358,56 +1383,86 @@ ul {
     font-size: 1rem;
 }
 
-/* Seção de workflow */
-.comics-workflow {
-    margin-top: 60px;
-    text-align: center;
+/* Modal para imagem ampliada */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    animation: fadeIn 0.3s ease;
 }
 
-.workflow-title {
-    font-size: 2rem;
-    color: #1e5799;
-    margin-bottom: 40px;
-    font-weight: 600;
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    animation: zoomIn 0.3s ease;
 }
 
-.workflow-steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-}
-
-.workflow-step {
-    background: white;
-    padding: 30px 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease;
-}
-
-.workflow-step:hover {
-    transform: translateY(-5px);
-}
-
-.step-icon {
-    width: 70px;
-    height: 70px;
-    background: #e3f2fd;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
-    font-size: 1.8rem;
-    color: #1e5799;
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
     font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 1001;
 }
 
-.step-title {
-    font-size: 1.2rem;
-    color: #1e5799;
-    margin-bottom: 10px;
+.modal-close:hover {
+    color: #ccc;
+}
+
+.modal-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Conclusão dos quadrinhos */
+.comics-conclusion {
+    margin-top: 50px;
+    text-align: center;
+    padding: 40px;
+    background: linear-gradient(135deg, #1e5799 0%, #207cca 100%);
+    border-radius: 12px;
+    color: white;
+}
+
+.conclusion-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
     font-weight: 600;
+}
+
+.conclusion-text {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    line-height: 1.6;
 }
 
 /* Estilo para o CTA de vídeo */
@@ -1450,16 +1505,31 @@ ul {
         font-size: 2rem;
     }
     
-    .workflow-steps {
-        grid-template-columns: 1fr;
-    }
-    
     .comic-image {
         height: 180px;
     }
     
-    .comic-icon {
-        font-size: 3rem;
+    .comics-conclusion {
+        padding: 30px 20px;
+    }
+    
+    .conclusion-title {
+        font-size: 1.5rem;
+    }
+    
+    .conclusion-text {
+        font-size: 1.1rem;
+    }
+    
+    .modal-content {
+        max-width: 95%;
+        max-height: 80%;
+    }
+    
+    .modal-close {
+        top: 10px;
+        right: 20px;
+        font-size: 30px;
     }
 }
 
@@ -1484,10 +1554,12 @@ ul {
     .comic-title {
         font-size: 1.2rem;
     }
-}
-
-.comic-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    
+    .comics-conclusion {
+        padding: 25px 15px;
+    }
+    
+    .comic-image {
+        height: 160px;
+    }
 }
