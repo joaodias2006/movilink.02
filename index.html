@@ -4,22 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoviLink - Logística Descomplicada</title>
-    <link rel="icon" type="imagens/x-icon" href=logo.png>
+    <link rel="icon" type="imagens/x-icon" href="logo.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <style>
+        /* ESTILOS MINIMALISTAS - APENAS O ESSENCIAL */
+        .hero-titulo-container-fixo {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .titulo-fixo {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .texto-animado {
+            color: #0A66C2;
+            font-weight: 700;
+            display: inline;
+        }
+        
+        .cursor-animado {
+            display: inline-block;
+            width: 3px;
+            background-color: #0A66C2;
+            margin-left: 2px;
+            animation: piscar 0.7s infinite;
+            height: 1.2em;
+            vertical-align: middle;
+        }
+        
+        @keyframes piscar {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        /* CORREÇÃO DO SUBTÍTULO */
+        .hero-subtitle-container {
+            text-align: center !important;
+            width: 100% !important;
+            max-width: 600px !important;
+            margin: 0 auto !important;
+            padding: 0 20px !important;
+        }
+        
+        .hero-subtitle {
+            text-align: center !important;
+            margin: 0 auto !important;
+            display: block !important;
+            width: 100% !important;
+        }
+        
+        /* GARANTIR QUE O CONTEÚDO DO HERÓI SEJA CENTRALIZADO */
+        .hero-content {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 100% !important;
+            text-align: center !important;
+        }
+        
+        .hero-buttons {
+            display: flex !important;
+            justify-content: center !important;
+            width: 100% !important;
+            gap: 1rem !important;
+        }
+    </style>
 </head>
-
-<script src="js/animacao-logistica.js"></script>
 
 <body>
     <header class="header">
         <nav class="navbar">
             <div class="nav-container">
                 <div class="nav-logo">
-                <a href="index.html">
-                    <img src="logo.png" alt="MoviLink Logo" class="logo-image">
-                    <h1>MoviLink</h1>
+                    <a href="index.html">
+                        <img src="logo.png" alt="MoviLink Logo" class="logo-image">
+                        <h1>MoviLink</h1>
+                    </a>
                 </div>
                 <ul class="nav-menu">
                     <li class="nav-item">
@@ -45,37 +114,38 @@
     </header>
 
     <main>
-       <!-- Hero Section -->
-<!-- VERSÃO ALTERNATIVA - ABSOLUTA -->
-<section class="hero">
-    <div class="hero-container">
-        <div class="hero-content">
-            <div class="hero-titulo-container">
-                <h1 class="hero-title">
-                    Descomplicando a 
-                    <span id="palavra-digitando" class="palavra-destaque digitando"></span>
-                </h1>
-            </div>
-            <div class="hero-subtitle-container">
-                <p class="hero-subtitle">Transformamos conceitos complexos em conhecimento acessível através de conteúdos multimodais e educativos</p>
-            </div>
-            <div class="hero-buttons">
-                <a href="blog.html" class="btn btn-primary">Explorar Conteúdos</a>
-                <a href="sobre.html" class="btn btn-secondary">Saiba Mais</a>
-            </div>
-        </div>
-        <div class="hero-image">
-            <div class="hero-graphic">
-                <div class="logistics-icon">📦</div>
-                <div class="arrow-flow">→</div>
-                <div class="logistics-icon">🚛</div>
-                <div class="arrow-flow">→</div>
-                <div class="logistics-icon">🏪</div>
-            </div>
-        </div>
-    </div>
-</section>
+       <!-- Hero Section Corrigida -->
+       <section class="hero">
+           <div class="hero-container">
+               <div class="hero-content">
+                   <div class="hero-titulo-container-fixo">
+                       <h1 class="titulo-fixo">
+                           Descomplicando a 
+                           <span id="texto-dinamico" class="texto-animado">Logística</span>
+                           <span id="cursor-dinamico" class="cursor-animado"></span>
+                       </h1>
+                   </div>
+                   <div class="hero-subtitle-container">
+                       <p class="hero-subtitle">Transformamos conceitos complexos em conhecimento acessível através de conteúdos multimodais e educativos</p>
+                   </div>
+                   <div class="hero-buttons">
+                       <a href="blog.html" class="btn btn-primary">Explorar Conteúdos</a>
+                       <a href="sobre.html" class="btn btn-secondary">Saiba Mais</a>
+                   </div>
+               </div>
+               <div class="hero-image">
+                   <div class="hero-graphic">
+                       <div class="logistics-icon">📦</div>
+                       <div class="arrow-flow">→</div>
+                       <div class="logistics-icon">🚛</div>
+                       <div class="arrow-flow">→</div>
+                       <div class="logistics-icon">🏪</div>
+                   </div>
+               </div>
+           </div>
+       </section>
 
+        <!-- Resto do conteúdo permanece igual -->
         <!-- Features Section -->
         <section class="features">
             <div class="container">
@@ -184,120 +254,69 @@
     </footer>
     
     <script src="js/script.js"></script>
-    <script src="js/texto-rotativo.js"></script>
-</body>
-</html>
-
-<style>
-/* VERSÃO COM POSIÇÃO FIXA */
-.hero-titulo-container {
-    height: 120px; /* Altura fixa para o título */
-    display: flex;
-    align-items: center;
-}
-
-.hero-subtitle-container {
-    margin-top: 20px; /* Espaço fixo entre título e subtítulo */
-}
-
-.palavra-destaque {
-    color: var(--primary-blue);
-    font-weight: 700;
-    display: inline-block;
-    min-width: 250px; /* Largura suficiente para a palavra maior */
-    text-align: left;
-}
-
-.digitando {
-    border-right: 3px solid var(--primary-blue);
-    animation: piscar 0.7s infinite;
-}
-
-@keyframes piscar {
-    0%, 50% { border-color: var(--primary-blue); }
-    51%, 100% { border-color: transparent; }
-}
-</style>
-
-
-<script>
-// Código direto no HTML para teste
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Script carregado!');
-    const palavras = document.querySelectorAll('.palavras-em-rotacao .palavra');
-    console.log('Palavras encontradas:', palavras.length);
     
-    if (palavras.length > 0) {
-        let indiceAtual = 0;
-        palavras[0].classList.add('ativa');
-        
-        setInterval(() => {
-            palavras.forEach(p => p.classList.remove('ativa'));
-            palavras[indiceAtual].classList.add('ativa');
-            indiceAtual = (indiceAtual + 1) % palavras.length;
-        }, 3000);
-    }
-});
-</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('INICIANDO ANIMAÇÃO...');
-    
-    const elemento = document.getElementById('palavra-digitando');
-    const palavras = ['Logística', 'Cadeia de Suprimentos', 'Gestão de Estoques', 'Processos Logísticos'];
-    let palavraIndex = 0;
-    let caractereIndex = 0;
-    let digitando = true;
-    
-    if (elemento) {
-        console.log('Elemento de digitação encontrado!');
-        
-        function animar() {
-            const palavraAtual = palavras[palavraIndex];
+    <script>
+        // ANIMAÇÃO SIMPLES E DIRETA
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Iniciando animação simplificada...');
             
-            if (digitando) {
-                // Modo digitação
-                if (caractereIndex <= palavraAtual.length) {
-                    elemento.textContent = palavraAtual.substring(0, caractereIndex);
-                    caractereIndex++;
-                    setTimeout(animar, 100);
+            const textoElemento = document.getElementById('texto-dinamico');
+            const cursorElemento = document.getElementById('cursor-dinamico');
+            const palavras = ['Logística', 'Cadeia de Suprimentos', 'Gestão de Estoques', 'Processos Logísticos'];
+            
+            let palavraIndex = 0;
+            let caractereIndex = 0;
+            let digitando = true;
+            let timeoutId;
+            
+            function animarTexto() {
+                const palavraAtual = palavras[palavraIndex];
+                
+                if (digitando) {
+                    // Digitando - adiciona caracteres
+                    if (caractereIndex <= palavraAtual.length) {
+                        textoElemento.textContent = palavraAtual.substring(0, caractereIndex);
+                        caractereIndex++;
+                        timeoutId = setTimeout(animarTexto, 100);
+                    } else {
+                        // Pausa com texto completo
+                        digitando = false;
+                        timeoutId = setTimeout(animarTexto, 2000);
+                    }
                 } else {
-                    // Terminou de digitar
-                    digitando = false;
-                    setTimeout(animar, 2000); // Pausa com texto completo
-                }
-            } else {
-                // Modo apagar
-                if (caractereIndex >= 0) {
-                    elemento.textContent = palavraAtual.substring(0, caractereIndex);
-                    caractereIndex--;
-                    setTimeout(animar, 50);
-                } else {
-                    // Terminou de apagar, próxima palavra
-                    digitando = true;
-                    palavraIndex = (palavraIndex + 1) % palavras.length;
-                    setTimeout(animar, 500);
+                    // Apagando - remove caracteres
+                    if (caractereIndex >= 0) {
+                        textoElemento.textContent = palavraAtual.substring(0, caractereIndex);
+                        caractereIndex--;
+                        timeoutId = setTimeout(animarTexto, 50);
+                    } else {
+                        // Próxima palavra
+                        digitando = true;
+                        palavraIndex = (palavraIndex + 1) % palavras.length;
+                        timeoutId = setTimeout(animarTexto, 500);
+                    }
                 }
             }
-        }
-        
-        // Inicia a animação
-        animar();
-        
-    } else {
-        console.log('ERRO: Elemento não encontrado!');
-    }
-});
-</script>
+            
+            // Iniciar animação
+            animarTexto();
+            
+            // Limpar ao sair
+            window.addEventListener('beforeunload', function() {
+                if (timeoutId) clearTimeout(timeoutId);
+            });
+        });
+    </script>
 
-<div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-        <div class="vw-plugin-top-wrapper"></div>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
     </div>
-</div>
-<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-<script>
-    new window.VLibras.Widget ( 'https://vlibras.gov.br/app' );
-</script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+</body>
+</html>
