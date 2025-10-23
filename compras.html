@@ -89,7 +89,7 @@
                             <div class="comics-grid">
                                 <!-- Quadrinho 1 -->
                                 <div class="comic-card">
-                                    <div class="comic-image" onclick="openModal('imagens/quadrinho1.jpg', 'Escolha dos Fornecedores')">
+                                    <div class="comic-image" onclick="openModal('imagens/quadrinho1.jpeg', 'Escolha dos Fornecedores')">
                                         <img src="imagens/quadrinho1.jpeg" alt="Escolha dos fornecedores" class="comic-img">
                                     </div>
                                     <div class="comic-content">
@@ -100,7 +100,7 @@
                                 
                                 <!-- Quadrinho 2 -->
                                 <div class="comic-card">
-                                    <div class="comic-image" onclick="openModal('imagens/quadrinho2.jpg', 'Recolhimento e Armazenagem')">
+                                    <div class="comic-image" onclick="openModal('imagens/quadrinho2.jpeg', 'Recolhimento e Armazenagem')">
                                         <img src="imagens/quadrinho2.jpeg" alt="Recolhimento e armazenagem" class="comic-img">
                                     </div>
                                     <div class="comic-content">
@@ -111,7 +111,7 @@
                                 
                                 <!-- Quadrinho 3 -->
                                 <div class="comic-card">
-                                    <div class="comic-image" onclick="openModal('imagens/quadrinho3.jpg', 'Quantidades Ideais')">
+                                    <div class="comic-image" onclick="openModal('imagens/quadrinho3.jpeg', 'Quantidades Ideais')">
                                         <img src="imagens/quadrinho3.jpeg" alt="Quantidades ideais" class="comic-img">
                                     </div>
                                     <div class="comic-content">
@@ -241,7 +241,6 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
     <script>
         // Funções para o modal de imagem
         function openModal(imageSrc, caption) {
@@ -260,17 +259,22 @@
         }
 
         // Fechar modal clicando fora da imagem
-        document.getElementById('imageModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('imageModal');
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeModal();
+                    }
+                });
             }
-        });
-
-        // Fechar modal com a tecla ESC
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
+            
+            // Fechar modal com a tecla ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
         });
     </script>
 
