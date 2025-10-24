@@ -479,3 +479,343 @@ const additionalCSS = `
     }
 }
 `;
+
+// Adicionar ao arquivo script.js
+
+// ===== NOVAS FUNCIONALIDADES =====
+
+// Observador de interseção para animações de scroll
+function initScrollReveal() {
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    revealElements.forEach(element => {
+        revealObserver.observe(element);
+    });
+}
+
+// Smooth scrolling aprimorado
+function initEnhancedSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            
+            if (target) {
+                const headerHeight = document.querySelector('.header').offsetHeight;
+                const targetPosition = target.offsetTop - headerHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Adicionar classe ativa temporariamente
+                this.classList.add('clicked');
+                setTimeout(() => {
+                    this.classList.remove('clicked');
+                }, 1000);
+            }
+        });
+    });
+}
+
+// Preloader suave
+function initPreloader() {
+    window.addEventListener('load', function() {
+        const preloader = document.querySelector('.preloader');
+        if (preloader) {
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        }
+    });
+}
+
+// Lazy loading aprimorado
+function initEnhancedLazyLoading() {
+    const lazyImages = document.querySelectorAll('img[data-src]');
+    
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                img.classList.add('fade-in');
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+    
+    lazyImages.forEach(img => imageObserver.observe(img));
+}
+
+// Sistema de notificações aprimorado
+function showEnhancedNotification(message, type = 'info', duration = 3000) {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <span class="notification-icon">${getNotificationIcon(type)}</span>
+            <span class="notification-message">${message}</span>
+            <button class="notification-close" aria-label="Fechar notificação">×</button>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Animação de entrada
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 100);
+    
+    // Fechar notificação
+    const closeBtn = notification.querySelector('.notification-close');
+    closeBtn.addEventListener('click', () => {
+        hideNotification(notification);
+    });
+    
+    // Auto-remover
+    if (duration > 0) {
+        setTimeout(() => {
+            hideNotification(notification);
+        }, duration);
+    }
+    
+    return notification;
+}
+
+function hideNotification(notification) {
+    notification.classList.remove('show');
+    setTimeout(() => {
+        notification.remove();
+    }, 300);
+}
+
+function getNotificationIcon(type) {
+    const icons = {
+        success: '✓',
+        error: '✕',
+        warning: '⚠',
+        info: 'ℹ'
+    };
+    return icons[type] || icons.info;
+}
+
+// Sistema de tooltips aprimorado
+function initEnhancedTooltips() {
+    const tooltipElements = document.querySelectorAll('[data-tooltip]');
+    
+    tooltipElements.forEach(element => {
+        let tooltip = null;
+        let timeout = null;
+        
+        element.addEventListener('mouseenter', function() {
+            timeout = setTimeout(() => {
+                tooltip = document.createElement('div');
+                tooltip.className = 'tooltip';
+                tooltip.textContent = this.getAttribute('data-tooltip');
+                document.body.appendChild(tooltip);
+                
+                const rect = this.getBoundingClientRect();
+                const tooltipRect = tooltip.getBoundingClientRect();
+                
+                let top = rect.top - tooltipRect.height - 10;
+                let left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
+                
+                // Ajustar posição se necessário
+                if (top < 0) top = rect.bottom + 10;
+                if (left < 0) left = 10;
+                if (left + tooltipRect.width > window.innerWidth) {
+                    left = window.innerWidth - tooltipRect.width - 10;
+                }
+                
+                tooltip.style.top = top + 'px';
+                tooltip.style.left = left + 'px';
+                
+                setTimeout(() => {
+                    tooltip.classList.add('show');
+                }, 10);
+            }, 300);
+        });
+        
+        element.addEventListener('mouseleave', function() {
+            clearTimeout(timeout);
+            if (tooltip) {
+                tooltip.classList.remove('show');
+                setTimeout(() => {
+                    if (tooltip && tooltip.parentNode) {
+                        tooltip.parentNode.removeChild(tooltip);
+                    }
+                }, 300);
+            }
+        });
+    });
+}
+
+// Sistema de busca em tempo real
+function initLiveSearch() {
+    const searchInput = document.querySelector('#live-search');
+    const searchResults = document.querySelector('#search-results');
+    
+    if (searchInput && searchResults) {
+        let timeout = null;
+        
+        searchInput.addEventListener('input', function() {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                const query = this.value.trim();
+                
+                if (query.length < 2) {
+                    searchResults.style.display = 'none';
+                    return;
+                }
+                
+                // Simular busca (substituir por busca real)
+                const results = performSearch(query);
+                displaySearchResults(results);
+            }, 300);
+        });
+        
+        // Fechar resultados ao clicar fora
+        document.addEventListener('click', function(e) {
+            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                searchResults.style.display = 'none';
+            }
+        });
+    }
+}
+
+function performSearch(query) {
+    // Simulação de resultados de busca
+    // Substituir por busca real na sua base de dados
+    return [
+        { title: 'Logística Integrada', url: 'logistica-integrada.html', excerpt: 'Unindo todos os processos...' },
+        { title: 'Just in Time', url: 'just-in-time.html', excerpt: 'Produção no momento certo...' },
+        { title: 'Kanban', url: 'kanban.html', excerpt: 'Visualizando o fluxo de trabalho...' }
+    ].filter(item => 
+        item.title.toLowerCase().includes(query.toLowerCase()) ||
+        item.excerpt.toLowerCase().includes(query.toLowerCase())
+    );
+}
+
+function displaySearchResults(results) {
+    const searchResults = document.querySelector('#search-results');
+    
+    if (results.length === 0) {
+        searchResults.innerHTML = '<div class="search-no-results">Nenhum resultado encontrado</div>';
+    } else {
+        searchResults.innerHTML = results.map(result => `
+            <a href="${result.url}" class="search-result-item">
+                <h4>${result.title}</h4>
+                <p>${result.excerpt}</p>
+            </a>
+        `).join('');
+    }
+    
+    searchResults.style.display = 'block';
+}
+
+// Inicializar todas as funcionalidades
+document.addEventListener('DOMContentLoaded', function() {
+    // Funcionalidades existentes
+    initMobileMenu();
+    initBlogFilters();
+    initScrollAnimations();
+    initSmoothScrolling();
+    initHeaderScroll();
+    
+    // Novas funcionalidades
+    initScrollReveal();
+    initEnhancedSmoothScroll();
+    initPreloader();
+    initEnhancedLazyLoading();
+    initEnhancedTooltips();
+    initLiveSearch();
+    
+    // Adicionar classes de animação
+    document.querySelectorAll('.feature-card, .blog-card, .content-item').forEach(card => {
+        card.classList.add('reveal');
+    });
+});
+
+// Adicione esta função no seu script.js
+function initPreloader() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        // Esconder o preloader quando a página estiver totalmente carregada
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+                // Remover completamente do DOM após a animação
+                setTimeout(() => {
+                    if (preloader.parentNode) {
+                        preloader.parentNode.removeChild(preloader);
+                    }
+                }, 500);
+            }, 500); // Pequeno delay para garantir que tudo carregou
+        });
+
+        // Fallback: esconder após 3 segundos mesmo se não carregar totalmente
+        setTimeout(() => {
+            if (preloader.parentNode) {
+                preloader.classList.add('hidden');
+                setTimeout(() => {
+                    preloader.parentNode.removeChild(preloader);
+                }, 500);
+            }
+        }, 3000);
+    }
+}
+
+// E adicione esta chamada no DOMContentLoaded:
+document.addEventListener('DOMContentLoaded', function() {
+    // ... outras inicializações
+    initPreloader();
+});
+
+// Melhorar a experiência de clique nos cards do blog
+function initBlogCardClicks() {
+    const blogCards = document.querySelectorAll('.blog-card');
+    
+    blogCards.forEach(card => {
+        const link = card.querySelector('.blog-title a');
+        if (link) {
+            // Fazer o card inteiro clicável
+            card.style.cursor = 'pointer';
+            
+            card.addEventListener('click', function(e) {
+                // Não redirecionar se clicar em tags, meta ou outros elementos
+                if (!e.target.classList.contains('tag') && 
+                    !e.target.classList.contains('blog-date') &&
+                    !e.target.classList.contains('blog-read-time') &&
+                    !e.target.classList.contains('blog-icon')) {
+                    window.location.href = link.href;
+                }
+            });
+            
+            // Manter o hover no link do título
+            link.addEventListener('click', function(e) {
+                e.stopPropagation(); // Impede que o evento do card seja acionado
+            });
+        }
+    });
+}
+
+// Adicione esta chamada no DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+    // ... outras inicializações
+    initBlogCardClicks();
+});
