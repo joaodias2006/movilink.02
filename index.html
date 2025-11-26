@@ -4,78 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoviLink - Logística Descomplicada</title>
-    <link rel="icon" type="imagens/x-icon" href="logo.png">
+    <link rel="icon" type="image/x-icon" href="logo.png">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* ESTILOS MINIMALISTAS - APENAS O ESSENCIAL */
+        /* Mantendo seu estilo específico do header, mas integrando ao novo design */
         .hero-titulo-container-fixo {
-            height: 120px;
+            min-height: 120px; /* Ajuste para evitar pulos */
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
+            z-index: 2; /* Garante que fique acima das formas do fundo */
         }
         
         .titulo-fixo {
             text-align: center;
             margin: 0;
             padding: 0;
+            font-size: 3.5rem; /* Aumentei um pouco para impacto */
         }
         
         .texto-animado {
             color: #0A66C2;
-            font-weight: 700;
-            display: inline;
+            font-weight: 800;
+            display: inline-block;
+            background: linear-gradient(120deg, #0A66C2, #00a0dc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .cursor-animado {
             display: inline-block;
-            width: 3px;
+            width: 4px;
             background-color: #0A66C2;
-            margin-left: 2px;
+            margin-left: 5px;
             animation: piscar 0.7s infinite;
-            height: 1.2em;
+            height: 1em;
             vertical-align: middle;
+            border-radius: 2px;
         }
         
         @keyframes piscar {
             0%, 50% { opacity: 1; }
             51%, 100% { opacity: 0; }
         }
-        
-        /* CORREÇÃO DO SUBTÍTULO */
-        .hero-subtitle-container {
-            text-align: center !important;
-            width: 100% !important;
-            max-width: 600px !important;
-            margin: 0 auto !important;
-            padding: 0 20px !important;
-        }
-        
-        .hero-subtitle {
-            text-align: center !important;
-            margin: 0 auto !important;
-            display: block !important;
-            width: 100% !important;
-        }
-        
-        /* GARANTIR QUE O CONTEÚDO DO HERÓI SEJA CENTRALIZADO */
-        .hero-content {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            justify-content: center !important;
-            width: 100% !important;
-            text-align: center !important;
-        }
-        
-        .hero-buttons {
-            display: flex !important;
-            justify-content: center !important;
-            width: 100% !important;
-            gap: 1rem !important;
+
+        /* Ajuste para mobile */
+        @media (max-width: 768px) {
+            .titulo-fixo { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -114,107 +92,120 @@
     </header>
 
     <main>
-       <!-- Hero Section Corrigida -->
-       <section class="hero">
-           <div class="hero-container">
-               <div class="hero-content">
+       <section class="hero hero-modern">
+           <div class="hero-shapes">
+               <div class="shape shape-1"></div>
+               <div class="shape shape-2"></div>
+           </div>
+
+           <div class="hero-container" style="position: relative; z-index: 2;">
+               <div class="hero-content reveal-up active">
                    <div class="hero-titulo-container-fixo">
                        <h1 class="titulo-fixo">
-                           Descomplicando a 
+                           Descomplicando a <br>
                            <span id="texto-dinamico" class="texto-animado">Logística</span>
                            <span id="cursor-dinamico" class="cursor-animado"></span>
                        </h1>
                    </div>
                    <div class="hero-subtitle-container">
-                       <p class="hero-subtitle">Transformamos conceitos complexos em conhecimento acessível através de conteúdos multimodais e educativos</p>
+                       <p class="hero-subtitle" style="font-size: 1.25rem; color: #4B5563;">
+                           Transformamos conceitos complexos em conhecimento acessível através de conteúdos multimodais e educativos.
+                       </p>
                    </div>
-                   <div class="hero-buttons">
-                       <a href="blog.html" class="btn btn-primary">Explorar Conteúdos</a>
-                       <a href="sobre.html" class="btn btn-secondary">Saiba Mais</a>
+                   <div class="hero-buttons" style="margin-top: 30px;">
+                       <a href="blog.html" class="btn btn-primary btn-modern-pulse">Explorar Conteúdos</a>
+                       <a href="sobre.html" class="btn btn-secondary btn-modern-pulse">Saiba Mais</a>
                    </div>
                </div>
-               <div class="hero-image">
-                   <div class="hero-graphic">
-                       <div class="logistics-icon">📦</div>
-                       <div class="arrow-flow">→</div>
-                       <div class="logistics-icon">🚛</div>
-                       <div class="arrow-flow">→</div>
-                       <div class="logistics-icon">🏪</div>
+               
+               <div class="hero-image reveal-up stagger-2" style="display: block;">
+                   <div class="hero-graphic" style="animation: floatShape 6s ease-in-out infinite;">
+                       <div class="logistics-icon" style="font-size: 4rem; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));">📦 🚛 🏪</div>
                    </div>
                </div>
            </div>
        </section>
 
-        <!-- Resto do conteúdo permanece igual -->
-        <!-- Features Section -->
-        <section class="features">
+        <section class="features" style="background: #ffffff;">
             <div class="container">
-                <h2 class="section-title">Nossos Temas Principais</h2>
+                <h2 class="section-title reveal-up">Nossos Temas Principais</h2>
                 <div class="features-grid">
-                    <div class="feature-card">
+                    
+                    <div class="feature-card card-modern reveal-up stagger-1">
                         <div class="feature-icon">🔗</div>
                         <h3>Logística Integrada</h3>
                         <p>Unificação de todos os processos logísticos para máxima eficiência</p>
                     </div>
-                    <div class="feature-card">
+
+                    <div class="feature-card card-modern reveal-up stagger-2">
                         <div class="feature-icon">⏰</div>
                         <h3>Just in Time</h3>
                         <p>Produção e entrega no momento exato, reduzindo estoques e custos</p>
                     </div>
-                    <div class="feature-card">
+
+                    <div class="feature-card card-modern reveal-up stagger-3">
                         <div class="feature-icon">📋</div>
                         <h3>Kanban</h3>
                         <p>Sistema visual para gerenciar fluxo de trabalho e identificar gargalos</p>
                     </div>
-                    <div class="feature-card">
+
+                    <div class="feature-card card-modern reveal-up stagger-4">
                         <div class="feature-icon">📈</div>
                         <h3>Kaizen</h3>
                         <p>Filosofia de melhoria contínua para eficiência máxima</p>
                     </div>
-                    <div class="feature-card">
+
+                    <div class="feature-card card-modern reveal-up stagger-1">
                         <div class="feature-icon">🧹</div>
                         <h3>5S</h3>
                         <p>Metodologia para organização, limpeza e disciplina no trabalho</p>
                     </div>
-                    <div class="feature-card">
+
+                    <div class="feature-card card-modern reveal-up stagger-2">
                         <div class="feature-icon">📦</div>
                         <h3>Cadeia de Suprimentos</h3>
-                        <p>Produção e entrega no momento exato, reduzindo estoques e custos</p>
+                        <p>Conceitos fundamentais da rede que move produtos do fornecedor ao cliente</p>
                     </div>
-                    <div class="feature-card">
+
+                    <div class="feature-card card-modern reveal-up stagger-3">
                         <div class="feature-icon">💰</div>
                         <h3>Compras</h3>
-                        <p>Produção e entrega no momento exato, reduzindo estoques e custos</p>
+                        <p>Gestão estratégica de aquisições para redução de custos</p>
                     </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- Content Types Section -->
-        <section class="content-types">
+        <section class="content-types" style="background: #f9fafb;">
             <div class="container">
-                <h2 class="section-title">Conteúdos Multimodais</h2>
+                <h2 class="section-title reveal-up">Conteúdos Multimodais</h2>
                 <div class="content-grid">
-                    <div class="content-item">
+                    
+                    <div class="content-item card-modern reveal-up stagger-1">
                         <div class="content-icon">📝</div>
                         <h4>Artigos Explicativos</h4>
                         <p>Textos claros e didáticos sobre processos logísticos</p>
                     </div>
-                    <div class="content-item">
+                    
+                    <div class="content-item card-modern reveal-up stagger-2">
                         <div class="content-icon">🎥</div>
                         <h4>Vídeos Educativos</h4>
                         <p>Conteúdo visual para facilitar o aprendizado</p>
                     </div>
-                    <div class="content-item">
+                    
+                    <div class="content-item card-modern reveal-up stagger-3">
                         <div class="content-icon">🗺️</div>
                         <h4>Mapas Mentais</h4>
                         <p>Visualização organizada de conceitos e processos</p>
                     </div>
-                    <div class="content-item">
+                    
+                    <div class="content-item card-modern reveal-up stagger-4">
                         <div class="content-icon">🎧</div>
                         <h4>Podcasts</h4>
                         <p>Discussões e entrevistas sobre logística</p>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -239,11 +230,11 @@
                 <div class="footer-section">
                     <h4>Temas</h4>
                     <ul>
-                        <li><a href="posts/logistica-integrada.html">Logística Integrada</a></li>
-                        <li><a href="posts/just-in-time.html">Just in Time</a></li>
-                        <li><a href="posts/kanban.html">Kanban</a></li>
-                        <li><a href="posts/kaizen.html">Kaizen</a></li>
-                        <li><a href="posts/5s.html">5S</a></li>
+                        <li><a href="logistica-integrada.html">Logística Integrada</a></li>
+                        <li><a href="just-in-time.html">Just in Time</a></li>
+                        <li><a href="kanban.html">Kanban</a></li>
+                        <li><a href="kaizen.html">Kaizen</a></li>
+                        <li><a href="5s.html">5S</a></li>
                     </ul>
                 </div>
             </div>
@@ -253,13 +244,12 @@
         </div>
     </footer>
     
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
+    <script src="hamburguer.js"></script>
     
     <script>
-        // ANIMAÇÃO SIMPLES E DIRETA
+        // SCRIPT ORIGINAL DE DIGITAÇÃO (MANTIDO)
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Iniciando animação simplificada...');
-            
             const textoElemento = document.getElementById('texto-dinamico');
             const cursorElemento = document.getElementById('cursor-dinamico');
             const palavras = ['Logística', 'Cadeia de Suprimentos', 'Gestão de Estoques', 'Processos Logísticos'];
@@ -273,35 +263,27 @@
                 const palavraAtual = palavras[palavraIndex];
                 
                 if (digitando) {
-                    // Digitando - adiciona caracteres
                     if (caractereIndex <= palavraAtual.length) {
                         textoElemento.textContent = palavraAtual.substring(0, caractereIndex);
                         caractereIndex++;
                         timeoutId = setTimeout(animarTexto, 100);
                     } else {
-                        // Pausa com texto completo
                         digitando = false;
                         timeoutId = setTimeout(animarTexto, 2000);
                     }
                 } else {
-                    // Apagando - remove caracteres
                     if (caractereIndex >= 0) {
                         textoElemento.textContent = palavraAtual.substring(0, caractereIndex);
                         caractereIndex--;
                         timeoutId = setTimeout(animarTexto, 50);
                     } else {
-                        // Próxima palavra
                         digitando = true;
                         palavraIndex = (palavraIndex + 1) % palavras.length;
                         timeoutId = setTimeout(animarTexto, 500);
                     }
                 }
             }
-            
-            // Iniciar animação
             animarTexto();
-            
-            // Limpar ao sair
             window.addEventListener('beforeunload', function() {
                 if (timeoutId) clearTimeout(timeoutId);
             });
@@ -319,6 +301,5 @@
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
 
-    
 </body>
 </html>
