@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logística Integrada: Unindo Todos os Processos - MoviLink</title>
-    <link rel="icon" type="imagens/x-icon" href=logo.png>
+    <link rel="icon" type="image/x-icon" href="logo.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -13,21 +13,16 @@
         <nav class="navbar">
             <div class="nav-container">
                 <div class="nav-logo">
-                    <h1><a href="index.html" style="text-decoration: none; color: inherit;">MoviLink</a></h1>
+                    <a href="index.html">
+                        <img src="logo.png" alt="MoviLink Logo" class="logo-image">
+                        <h1>MoviLink</h1>
+                    </a>
                 </div>
                 <ul class="nav-menu">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link">Início</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="sobre.html" class="nav-link">Sobre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="blog.html" class="nav-link active">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="equipe.html" class="nav-link">Equipe</a>
-                    </li>
+                    <li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a href="sobre.html" class="nav-link">Sobre</a></li>
+                    <li class="nav-item"><a href="blog.html" class="nav-link active">Blog</a></li>
+                    <li class="nav-item"><a href="equipe.html" class="nav-link">Equipe</a></li>
                 </ul>
                 <div class="hamburger">
                     <span class="bar"></span>
@@ -39,16 +34,27 @@
     </header>
 
     <main>
+        <!-- Hero Moderno -->
+        <section class="page-hero hero-modern">
+            <div class="hero-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+            </div>
+            <div class="container" style="position: relative; z-index: 2;">
+                <h1 class="page-title reveal-up">Logística Integrada: Unindo Todos os Processos</h1>
+                <p class="page-subtitle reveal-up stagger-1">Uma revolução na gestão de processos operacionais</p>
+            </div>
+        </section>
+
         <article class="post-content">
             <div class="container">
-                <div class="post-header">
+                <div class="post-header reveal-up">
                     <div class="post-breadcrumb">
                         <a href="blog.html">Blog</a> → <span>Logística Integrada</span>
                     </div>
                     <div class="post-category">
                         <span class="category-badge">Conceitos</span>
                     </div>
-                    <h1 class="post-title">Logística Integrada: Unindo Todos os Processos</h1>
                     <div class="post-meta">
                         <span class="post-date">15 de Dezembro, 2024</span>
                         <span class="post-read-time">5 min de leitura</span>
@@ -63,151 +69,106 @@
                 </div>
 
                 <div class="post-body">
-                    <div class="post-intro">
+                    <div class="post-intro reveal-up stagger-1">
                         <p class="lead">A logística integrada representa uma revolução na forma como as empresas gerenciam seus processos operacionais. Mais do que uma simples metodologia, ela é uma filosofia que conecta todos os elos da cadeia de suprimentos, desde a matéria-prima até o produto final nas mãos do consumidor.</p>
                     </div>
 
-                    <section class="post-section">
+                    <section class="post-section reveal-up">
                         <h2>O que é Logística Integrada?</h2>
                         <p>A logística integrada é uma estratégia de gestão que unifica todos os processos logísticos de uma empresa em um sistema coeso e interconectado. Diferentemente da abordagem tradicional, onde cada departamento opera de forma isolada, a logística integrada promove a colaboração e o compartilhamento de informações entre todas as áreas envolvidas na cadeia de suprimentos.</p>
                         
-                        <p>Esta abordagem holística engloba desde o planejamento da demanda até a entrega final do produto, passando por compras, produção, armazenagem, distribuição e atendimento ao cliente. O objetivo principal é criar um fluxo contínuo e eficiente que maximize a satisfação do cliente enquanto minimiza custos e desperdícios.</p>
-
-                        <div class="highlight-box">
+                        <div class="highlight-box card-modern">
                             <h3>💡 Conceito Chave</h3>
                             <p>A logística integrada não é apenas sobre conectar sistemas, mas sobre criar uma cultura organizacional onde a colaboração e a visibilidade são prioridades em todos os níveis da empresa.</p>
                         </div>
                     </section>
 
-                    <section class="post-section">
+                    <section class="post-section reveal-up">
                         <h2>Os Pilares da Logística Integrada</h2>
-                        
-                        <h3>1. Integração de Sistemas</h3>
-                        <p>O primeiro pilar fundamental é a integração tecnológica. Sistemas como ERP (Enterprise Resource Planning), WMS (Warehouse Management System) e TMS (Transportation Management System) devem trabalhar em harmonia, compartilhando dados em tempo real. Esta integração permite uma visão completa da operação e facilita a tomada de decisões baseada em informações precisas e atualizadas.</p>
-
-                        <h3>2. Colaboração Entre Departamentos</h3>
-                        <p>A quebra de silos organizacionais é essencial. Vendas, produção, compras, armazenagem e distribuição devem trabalhar como uma única equipe, compartilhando objetivos comuns e métricas alinhadas. Esta colaboração reduz conflitos internos e melhora significativamente a eficiência operacional.</p>
-
-                        <h3>3. Visibilidade da Cadeia de Suprimentos</h3>
-                        <p>Ter visibilidade completa de todos os processos, desde fornecedores até clientes finais, é crucial. Isso inclui rastreamento de produtos, monitoramento de estoques, acompanhamento de entregas e análise de performance em tempo real.</p>
-
-                        <h3>4. Padronização de Processos</h3>
-                        <p>Estabelecer procedimentos padronizados garante consistência e qualidade em todas as operações. Isso facilita o treinamento de funcionários, reduz erros e melhora a eficiência geral do sistema.</p>
-                    </section>
-
-                    <section class="post-section">
-                        <h2>Benefícios da Implementação</h2>
-                        
                         <div class="benefits-grid">
-                            <div class="benefit-item">
-                                <h4>📈 Redução de Custos</h4>
-                                <p>A integração elimina redundâncias e otimiza recursos, resultando em significativa redução de custos operacionais. Estudos mostram que empresas com logística integrada podem reduzir custos em até 15-20%.</p>
+                            <div class="benefit-item card-modern stagger-1">
+                                <h4>1. Integração de Sistemas</h4>
+                                <p>Sistemas como ERP, WMS e TMS devem trabalhar em harmonia, compartilhando dados em tempo real para uma visão completa da operação.</p>
                             </div>
-                            
-                            <div class="benefit-item">
-                                <h4>⚡ Maior Agilidade</h4>
-                                <p>Processos integrados respondem mais rapidamente às mudanças do mercado e às demandas dos clientes, proporcionando vantagem competitiva significativa.</p>
+                            <div class="benefit-item card-modern stagger-2">
+                                <h4>2. Colaboração</h4>
+                                <p>A quebra de silos organizacionais é essencial. Vendas, produção e compras devem trabalhar como uma única equipe.</p>
                             </div>
-                            
-                            <div class="benefit-item">
-                                <h4>🎯 Melhor Atendimento</h4>
-                                <p>Com informações centralizadas e processos otimizados, o atendimento ao cliente melhora substancialmente, aumentando a satisfação e fidelização.</p>
+                            <div class="benefit-item card-modern stagger-3">
+                                <h4>3. Visibilidade</h4>
+                                <p>Ter visibilidade completa de todos os processos, desde fornecedores até clientes finais, é crucial para o rastreamento e monitoramento.</p>
                             </div>
-                            
-                            <div class="benefit-item">
-                                <h4>📊 Decisões Baseadas em Dados</h4>
-                                <p>A integração de sistemas fornece dados precisos e em tempo real, permitindo decisões mais assertivas e estratégicas.</p>
+                            <div class="benefit-item card-modern stagger-4">
+                                <h4>4. Padronização</h4>
+                                <p>Estabelecer procedimentos padronizados garante consistência, qualidade e facilita o treinamento de novos colaboradores.</p>
                             </div>
                         </div>
                     </section>
 
-                    <section class="post-section">
-                        <h2>Desafios na Implementação</h2>
-                        
-                        <p>Embora os benefícios sejam claros, a implementação da logística integrada apresenta desafios significativos que devem ser cuidadosamente gerenciados:</p>
-
-                        <h3>Resistência à Mudança</h3>
-                        <p>Funcionários acostumados com processos tradicionais podem resistir às mudanças. É fundamental investir em treinamento e comunicação clara sobre os benefícios da integração.</p>
-
-                        <h3>Investimento Tecnológico</h3>
-                        <p>A integração de sistemas requer investimentos significativos em tecnologia e infraestrutura. É importante fazer um planejamento financeiro adequado e considerar o retorno sobre o investimento a longo prazo.</p>
-
-                        <h3>Complexidade de Integração</h3>
-                        <p>Integrar sistemas legados com novas tecnologias pode ser complexo e demorado. É recomendável uma abordagem gradual, implementando a integração por fases.</p>
+                    <section class="post-section reveal-up">
+                        <h2>Benefícios da Implementação</h2>
+                        <div class="benefits-grid">
+                            <div class="benefit-item card-modern">
+                                <h4>📈 Redução de Custos</h4>
+                                <p>A integração elimina redundâncias e otimiza recursos. Estudos mostram redução de custos em até 15-20%.</p>
+                            </div>
+                            <div class="benefit-item card-modern">
+                                <h4>⚡ Maior Agilidade</h4>
+                                <p>Processos integrados respondem mais rapidamente às mudanças do mercado e demandas dos clientes.</p>
+                            </div>
+                            <div class="benefit-item card-modern">
+                                <h4>🎯 Melhor Atendimento</h4>
+                                <p>Com informações centralizadas, o atendimento ao cliente melhora substancialmente, aumentando a fidelização.</p>
+                            </div>
+                            <div class="benefit-item card-modern">
+                                <h4>📊 Decisões Precisas</h4>
+                                <p>Dados precisos e em tempo real permitem decisões mais assertivas e estratégicas.</p>
+                            </div>
+                        </div>
                     </section>
 
-                    <section class="post-section">
-                        <h2>Tecnologias Habilitadoras</h2>
-                        
-                        <p>Diversas tecnologias modernas facilitam a implementação da logística integrada:</p>
-
-                        <h3>Internet das Coisas (IoT)</h3>
-                        <p>Sensores e dispositivos conectados fornecem dados em tempo real sobre localização, temperatura, umidade e outras condições importantes para a cadeia de suprimentos.</p>
-
-                        <h3>Inteligência Artificial e Machine Learning</h3>
-                        <p>Algoritmos avançados podem prever demandas, otimizar rotas, identificar padrões e automatizar decisões operacionais.</p>
-
-                        <h3>Blockchain</h3>
-                        <p>Proporciona transparência e rastreabilidade completa da cadeia de suprimentos, aumentando a confiança entre parceiros comerciais.</p>
-
-                        <h3>Cloud Computing</h3>
-                        <p>Facilita a integração de sistemas e o compartilhamento de dados entre diferentes localizações e parceiros da cadeia de suprimentos.</p>
+                    <section class="post-section reveal-up">
+                        <h2>Desafios e Tecnologias</h2>
+                        <p>Embora os benefícios sejam claros, a implementação exige superar a resistência à mudança e investir em tecnologias habilitadoras como:</p>
+                        <ul class="waste-list card-modern" style="padding: 25px; list-style-position: inside;">
+                            <li><strong>IoT (Internet das Coisas):</strong> Sensores para dados em tempo real.</li>
+                            <li><strong>IA e Machine Learning:</strong> Para previsão de demandas e otimização de rotas.</li>
+                            <li><strong>Blockchain:</strong> Para transparência e rastreabilidade.</li>
+                            <li><strong>Cloud Computing:</strong> Para integração e compartilhamento de dados.</li>
+                        </ul>
                     </section>
 
-                    <section class="post-section">
+                    <section class="post-section reveal-up">
                         <h2>Casos de Sucesso</h2>
-                        
-                        <h3>Amazon: O Pioneiro da Integração</h3>
-                        <p>A Amazon é frequentemente citada como exemplo de logística integrada bem-sucedida. Sua capacidade de integrar vendas online, gestão de estoque, fulfillment e entrega criou um padrão de excelência no mercado de e-commerce.</p>
-
-                        <h3>Walmart: Eficiência em Grande Escala</h3>
-                        <p>O Walmart utiliza logística integrada para gerenciar uma das maiores cadeias de suprimentos do mundo, conectando milhares de fornecedores a milhares de lojas de forma eficiente e econômica.</p>
+                        <div class="benefits-grid">
+                            <div class="benefit-item card-modern">
+                                <h4>Amazon</h4>
+                                <p>O pioneiro da integração, conectando vendas online, estoque e entrega em um padrão de excelência.</p>
+                            </div>
+                            <div class="benefit-item card-modern">
+                                <h4>Walmart</h4>
+                                <p>Eficiência em grande escala, conectando milhares de fornecedores e lojas de forma econômica.</p>
+                            </div>
+                        </div>
                     </section>
 
-                    <section class="post-section">
-                        <h2>Primeiros Passos para Implementação</h2>
-                        
-                        <p>Para empresas interessadas em implementar logística integrada, recomendamos os seguintes passos:</p>
-
-                        <ol class="implementation-steps">
-                            <li><strong>Diagnóstico Atual:</strong> Avalie os processos existentes e identifique gaps e oportunidades de melhoria.</li>
-                            <li><strong>Definição de Objetivos:</strong> Estabeleça metas claras e mensuráveis para a integração.</li>
-                            <li><strong>Planejamento Tecnológico:</strong> Escolha as tecnologias adequadas para suas necessidades específicas.</li>
-                            <li><strong>Implementação Gradual:</strong> Comece com projetos piloto antes de expandir para toda a organização.</li>
-                            <li><strong>Treinamento e Capacitação:</strong> Invista na preparação da equipe para os novos processos.</li>
-                            <li><strong>Monitoramento e Ajustes:</strong> Acompanhe os resultados e faça ajustes conforme necessário.</li>
-                        </ol>
-                    </section>
-
-                    <section class="post-section">
-                        <h2>Conclusão</h2>
-                        
-                        <p>A logística integrada representa o futuro da gestão de cadeias de suprimentos. Em um mundo cada vez mais competitivo e dinâmico, empresas que conseguem integrar efetivamente seus processos logísticos obtêm vantagens significativas em termos de custos, agilidade e satisfação do cliente.</p>
-
-                        <p>Embora a implementação apresente desafios, os benefícios a longo prazo justificam o investimento. O segredo está em uma abordagem estruturada, com planejamento adequado, investimento em tecnologia e, principalmente, no desenvolvimento de uma cultura organizacional que valorize a colaboração e a integração.</p>
-
-                        <p>A jornada rumo à logística integrada é contínua e evolutiva. À medida que novas tecnologias emergem e os mercados se transformam, as empresas devem estar preparadas para adaptar e aprimorar constantemente seus processos integrados.</p>
-                    </section>
-
-                    <div class="post-cta">
+                    <div class="post-cta card-modern reveal-up">
                         <h3>Continue Aprendendo</h3>
-                        <p>Gostou deste conteúdo? Explore outros temas relacionados em nosso blog:</p>
+                        <p>Gostou deste conteúdo? Explore outros temas relacionados:</p>
                         <div class="related-posts">
-                            <a href="just-in-time.html" class="related-post">
+                            <a href="just-in-time.html" class="related-post card-modern">
                                 <span class="related-icon">⏰</span>
-                                <span class="related-title">Just in Time: Produção no Momento Certo</span>
+                                <span class="related-title">Just in Time</span>
                             </a>
-                            <a href="kanban.html" class="related-post">
+                            <a href="kanban.html" class="related-post card-modern">
                                 <span class="related-icon">📋</span>
-                                <span class="related-title">Kanban: Visualizando o Fluxo de Trabalho</span>
+                                <span class="related-title">Kanban</span>
                             </a>
-                            <div style="margin-top: 20px; padding: 15px; background: var(--light-blue); border-radius: 8px; text-align: center;">
-                            <h4>🎥 Conteúdo em Vídeo</h4>
-                            <p>Assista ao nosso conteúdo sobre cadeia de suprimentos no YouTube!</p>
-                            <a href="https://www.youtube.com/@MOVILINK-i6r" target="_blank" class="btn btn-primary" style="margin-top: 10px;">
+                        </div>
+                        <div style="margin-top: 20px; text-align: center;">
+                            <a href="https://www.youtube.com/@MOVILINK-i6r" target="_blank" class="btn btn-primary btn-modern-pulse">
                                 Acessar Canal YouTube
                             </a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -220,15 +181,13 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>MoviLink</h3>
-                    <p>Tornando a logística mais compreensível e atrativa para todos.</p>
+                    <p>Logística descomplicada.</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Links Rápidos</h4>
+                    <h4>Links</h4>
                     <ul>
                         <li><a href="index.html">Início</a></li>
-                        <li><a href="sobre.html">Sobre</a></li>
                         <li><a href="blog.html">Blog</a></li>
-                        <li><a href="equipe.html">Equipe</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -236,29 +195,22 @@
                     <ul>
                         <li><a href="logistica-integrada.html">Logística Integrada</a></li>
                         <li><a href="just-in-time.html">Just in Time</a></li>
-                        <li><a href="kanban.html">Kanban</a></li>
-                        <li><a href="kaizen.html">Kaizen</a></li>
-                        <li><a href="5s.html">5S</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 MoviLink. Todos os direitos reservados.</p>
+                <p>&copy; 2025 MoviLink.</p>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script src="hamburguer.js"></script>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
 </body>
 </html>
-
-<div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-        <div class="vw-plugin-top-wrapper"></div>
-    </div>
-</div>
-<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-<script>
-    new window.VLibras.Widget ( 'https://vlibras.gov.br/app' );
-</script>
