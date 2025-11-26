@@ -819,3 +819,60 @@ document.addEventListener('DOMContentLoaded', function() {
     // ... outras inicializações
     initBlogCardClicks();
 });
+
+/* =========================================
+   NOVAS FUNCIONALIDADES - INTERATIVIDADE
+   (Adicionar ao final do arquivo)
+   ========================================= */
+
+document.addEventListener('DOMContentLoaded', function() {
+    initModernScrollReveal();
+    init3DTiltEffect();
+});
+
+// 1. Sistema Avançado de Scroll Reveal
+function initModernScrollReveal() {
+    const reveals = document.querySelectorAll('.reveal-up');
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                // Opcional: Parar de observar após animar uma vez
+                // revealObserver.unobserve(entry.target); 
+            }
+        });
+    }, {
+        threshold: 0.15, // Aciona quando 15% do elemento está visível
+        rootMargin: "0px 0px -50px 0px"
+    });
+
+    reveals.forEach(element => revealObserver.observe(element));
+}
+
+// 2. Efeito de Tilt 3D (Inclinação) nos Cards
+function init3DTiltEffect() {
+    const cards = document.querySelectorAll('.card-modern');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Calcular rotação baseada na posição do mouse
+            const xPct = x / rect.width;
+            const yPct = y / rect.height;
+            
+            const xRotation = (yPct - 0.5) * 10; // -5 a +5 graus (Invertido para tilt natural)
+            const yRotation = (xPct - 0.5) * -10; // -5 a +5 graus
+
+            card.style.transform = `perspective(1000px) rotateX(${xRotation}deg) rotateY(${yRotation}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            // Reseta a posição suavemente
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+        });
+    });
+}
