@@ -480,32 +480,132 @@ const additionalCSS = `
 }
 `;
 
-// Adicionar ao arquivo script.js
+// ===== MOVILINK - JAVASCRIPT CORRIGIDO E SIMPLIFICADO =====
 
-// ===== NOVAS FUNCIONALIDADES =====
-
-// Observador de interseção para animações de scroll
-function initScrollReveal() {
-    const revealElements = document.querySelectorAll('.reveal');
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 MoviLink - Inicializando...');
     
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
+    // Inicializar funcionalidades básicas
+    initMobileMenu();
+    initTypingAnimation();
+    initSmoothScrolling();
+    
+    // CORREÇÃO: Garantir que elementos estejam visíveis
+    setTimeout(ensureVisibility, 100);
+    
+    console.log('✅ Sistema inicializado!');
+});
+
+// Função principal para garantir visibilidade
+function ensureVisibility() {
+    console.log('👀 Garantindo visibilidade dos elementos...');
+    
+    // Elementos que devem SEMPRE estar visíveis
+    const criticalElements = [
+        '.hero-title', '.hero-subtitle', '.hero-buttons',
+        '.btn', '.btn-primary', '.btn-secondary',
+        '.hero-image', '.hero-graphic', '.logistics-icon',
+        '.arrow-flow', '.texto-animado', '.cursor-animado',
+        '.feature-card', '.feature-icon', '.content-item',
+        '.content-icon', '.nav-menu', '.nav-link'
+    ];
+    
+    criticalElements.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(element => {
+            if (element) {
+                element.style.opacity = '1';
+                element.style.visibility = 'visible';
+                
+                // Correções específicas de display
+                if (selector.includes('btn')) {
+                    element.style.display = 'inline-flex';
+                } else if (selector.includes('graphic') || selector.includes('icon')) {
+                    element.style.display = 'flex';
+                } else if (selector.includes('image')) {
+                    element.style.display = 'block';
+                } else if (selector.includes('menu')) {
+                    element.style.display = 'flex';
+                }
             }
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
     });
     
-    revealElements.forEach(element => {
-        revealObserver.observe(element);
+    // Correção específica para textos
+    const allTextElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, a, button');
+    allTextElements.forEach(element => {
+        if (element && window.getComputedStyle(element).opacity === '0') {
+            element.style.opacity = '1';
+            element.style.visibility = 'visible';
+        }
     });
 }
 
-// Smooth scrolling aprimorado
-function initEnhancedSmoothScroll() {
+// Sistema de Menu Mobile
+function initMobileMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (!hamburger || !navMenu) return;
+    
+    hamburger.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+    
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+}
+
+// Animação de Digitação (ORIGINAL FUNCIONAL)
+function initTypingAnimation() {
+    const textoDinamico = document.getElementById('texto-dinamico');
+    const cursorDinamico = document.getElementById('cursor-dinamico');
+    
+    if (!textoDinamico || !cursorDinamico) return;
+
+    const palavras = ['Logística', 'Cadeia de Suprimentos', 'Gestão de Estoques', 'Processos Logísticos'];
+    let palavraIndex = 0;
+    let letraIndex = 0;
+    let digitando = true;
+    let timeoutId;
+
+    function animarTexto() {
+        const palavraAtual = palavras[palavraIndex];
+        
+        if (digitando && letraIndex <= palavraAtual.length) {
+            textoDinamico.textContent = palavraAtual.substring(0, letraIndex);
+            letraIndex++;
+            timeoutId = setTimeout(animarTexto, 100);
+        } else if (!digitando && letraIndex >= 0) {
+            textoDinamico.textContent = palavraAtual.substring(0, letraIndex);
+            letraIndex--;
+            timeoutId = setTimeout(animarTexto, 50);
+        } else if (!digitando && letraIndex === 0) {
+            digitando = true;
+            palavraIndex = (palavraIndex + 1) % palavras.length;
+            timeoutId = setTimeout(animarTexto, 500);
+        } else {
+            digitando = false;
+            timeoutId = setTimeout(animarTexto, 1500);
+        }
+    }
+    
+    // Garantir que elementos estejam visíveis antes de iniciar animação
+    textoDinamico.style.opacity = '1';
+    textoDinamico.style.visibility = 'visible';
+    cursorDinamico.style.opacity = '1';
+    cursorDinamico.style.visibility = 'visible';
+    
+    animarTexto();
+}
+
+// Scroll Suave
+function initSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -519,318 +619,99 @@ function initEnhancedSmoothScroll() {
                     top: targetPosition,
                     behavior: 'smooth'
                 });
-                
-                // Adicionar classe ativa temporariamente
-                this.classList.add('clicked');
-                setTimeout(() => {
-                    this.classList.remove('clicked');
-                }, 1000);
             }
         });
     });
 }
 
-// Preloader suave
-function initPreloader() {
-    window.addEventListener('load', function() {
-        const preloader = document.querySelector('.preloader');
-        if (preloader) {
-            preloader.style.opacity = '0';
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500);
-        }
-    });
-}
+// Executar também quando a página carregar completamente
+window.addEventListener('load', function() {
+    setTimeout(ensureVisibility, 200);
+});
 
-// Lazy loading aprimorado
-function initEnhancedLazyLoading() {
-    const lazyImages = document.querySelectorAll('img[data-src]');
-    
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                img.classList.add('fade-in');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-    
-    lazyImages.forEach(img => imageObserver.observe(img));
-}
+// MoviLink - JavaScript Interativo Moderno
 
-// Sistema de notificações aprimorado
-function showEnhancedNotification(message, type = 'info', duration = 3000) {
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-        <div class="notification-content">
-            <span class="notification-icon">${getNotificationIcon(type)}</span>
-            <span class="notification-message">${message}</span>
-            <button class="notification-close" aria-label="Fechar notificação">×</button>
-        </div>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // Animação de entrada
-    setTimeout(() => {
-        notification.classList.add('show');
-    }, 100);
-    
-    // Fechar notificação
-    const closeBtn = notification.querySelector('.notification-close');
-    closeBtn.addEventListener('click', () => {
-        hideNotification(notification);
-    });
-    
-    // Auto-remover
-    if (duration > 0) {
-        setTimeout(() => {
-            hideNotification(notification);
-        }, duration);
-    }
-    
-    return notification;
-}
-
-function hideNotification(notification) {
-    notification.classList.remove('show');
-    setTimeout(() => {
-        notification.remove();
-    }, 300);
-}
-
-function getNotificationIcon(type) {
-    const icons = {
-        success: '✓',
-        error: '✕',
-        warning: '⚠',
-        info: 'ℹ'
-    };
-    return icons[type] || icons.info;
-}
-
-// Sistema de tooltips aprimorado
-function initEnhancedTooltips() {
-    const tooltipElements = document.querySelectorAll('[data-tooltip]');
-    
-    tooltipElements.forEach(element => {
-        let tooltip = null;
-        let timeout = null;
-        
-        element.addEventListener('mouseenter', function() {
-            timeout = setTimeout(() => {
-                tooltip = document.createElement('div');
-                tooltip.className = 'tooltip';
-                tooltip.textContent = this.getAttribute('data-tooltip');
-                document.body.appendChild(tooltip);
-                
-                const rect = this.getBoundingClientRect();
-                const tooltipRect = tooltip.getBoundingClientRect();
-                
-                let top = rect.top - tooltipRect.height - 10;
-                let left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
-                
-                // Ajustar posição se necessário
-                if (top < 0) top = rect.bottom + 10;
-                if (left < 0) left = 10;
-                if (left + tooltipRect.width > window.innerWidth) {
-                    left = window.innerWidth - tooltipRect.width - 10;
-                }
-                
-                tooltip.style.top = top + 'px';
-                tooltip.style.left = left + 'px';
-                
-                setTimeout(() => {
-                    tooltip.classList.add('show');
-                }, 10);
-            }, 300);
-        });
-        
-        element.addEventListener('mouseleave', function() {
-            clearTimeout(timeout);
-            if (tooltip) {
-                tooltip.classList.remove('show');
-                setTimeout(() => {
-                    if (tooltip && tooltip.parentNode) {
-                        tooltip.parentNode.removeChild(tooltip);
-                    }
-                }, 300);
-            }
-        });
-    });
-}
-
-// Sistema de busca em tempo real
-function initLiveSearch() {
-    const searchInput = document.querySelector('#live-search');
-    const searchResults = document.querySelector('#search-results');
-    
-    if (searchInput && searchResults) {
-        let timeout = null;
-        
-        searchInput.addEventListener('input', function() {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => {
-                const query = this.value.trim();
-                
-                if (query.length < 2) {
-                    searchResults.style.display = 'none';
-                    return;
-                }
-                
-                // Simular busca (substituir por busca real)
-                const results = performSearch(query);
-                displaySearchResults(results);
-            }, 300);
-        });
-        
-        // Fechar resultados ao clicar fora
-        document.addEventListener('click', function(e) {
-            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-                searchResults.style.display = 'none';
-            }
-        });
-    }
-}
-
-function performSearch(query) {
-    // Simulação de resultados de busca
-    // Substituir por busca real na sua base de dados
-    return [
-        { title: 'Logística Integrada', url: 'logistica-integrada.html', excerpt: 'Unindo todos os processos...' },
-        { title: 'Just in Time', url: 'just-in-time.html', excerpt: 'Produção no momento certo...' },
-        { title: 'Kanban', url: 'kanban.html', excerpt: 'Visualizando o fluxo de trabalho...' }
-    ].filter(item => 
-        item.title.toLowerCase().includes(query.toLowerCase()) ||
-        item.excerpt.toLowerCase().includes(query.toLowerCase())
-    );
-}
-
-function displaySearchResults(results) {
-    const searchResults = document.querySelector('#search-results');
-    
-    if (results.length === 0) {
-        searchResults.innerHTML = '<div class="search-no-results">Nenhum resultado encontrado</div>';
-    } else {
-        searchResults.innerHTML = results.map(result => `
-            <a href="${result.url}" class="search-result-item">
-                <h4>${result.title}</h4>
-                <p>${result.excerpt}</p>
-            </a>
-        `).join('');
-    }
-    
-    searchResults.style.display = 'block';
-}
-
-// Inicializar todas as funcionalidades
 document.addEventListener('DOMContentLoaded', function() {
-    // Funcionalidades existentes
+    // Inicializar funcionalidades principais
     initMobileMenu();
-    initBlogFilters();
-    initScrollAnimations();
+    initBlogFilters(); // Filtros corrigidos
+    initModernScrollReveal(); // Nova animação de scroll
+    init3DTiltEffect(); // Efeito 3D nos cards
     initSmoothScrolling();
     initHeaderScroll();
-    
-    // Novas funcionalidades
-    initScrollReveal();
-    initEnhancedSmoothScroll();
-    initPreloader();
-    initEnhancedLazyLoading();
-    initEnhancedTooltips();
-    initLiveSearch();
-    
-    // Adicionar classes de animação
-    document.querySelectorAll('.feature-card, .blog-card, .content-item').forEach(card => {
-        card.classList.add('reveal');
-    });
+    initBlogSearch(); // Nova busca
 });
 
-// Adicione esta função no seu script.js
-function initPreloader() {
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-        // Esconder o preloader quando a página estiver totalmente carregada
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                preloader.classList.add('hidden');
-                // Remover completamente do DOM após a animação
-                setTimeout(() => {
-                    if (preloader.parentNode) {
-                        preloader.parentNode.removeChild(preloader);
-                    }
-                }, 500);
-            }, 500); // Pequeno delay para garantir que tudo carregou
-        });
-
-        // Fallback: esconder após 3 segundos mesmo se não carregar totalmente
-        setTimeout(() => {
-            if (preloader.parentNode) {
-                preloader.classList.add('hidden');
-                setTimeout(() => {
-                    preloader.parentNode.removeChild(preloader);
-                }, 500);
-            }
-        }, 3000);
-    }
-}
-
-// E adicione esta chamada no DOMContentLoaded:
-document.addEventListener('DOMContentLoaded', function() {
-    // ... outras inicializações
-    initPreloader();
-});
-
-// Melhorar a experiência de clique nos cards do blog
-function initBlogCardClicks() {
+// =========================================
+// 1. Lógica de Filtros do Blog (CORRIGIDA)
+// =========================================
+function initBlogFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
     const blogCards = document.querySelectorAll('.blog-card');
     
-    blogCards.forEach(card => {
-        const link = card.querySelector('.blog-title a');
-        if (link) {
-            // Fazer o card inteiro clicável
-            card.style.cursor = 'pointer';
+    if (!filterButtons.length || !blogCards.length) return;
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // 1. Remover classe 'active' de todos os botões
+            filterButtons.forEach(btn => btn.classList.remove('active'));
             
-            card.addEventListener('click', function(e) {
-                // Não redirecionar se clicar em tags, meta ou outros elementos
-                if (!e.target.classList.contains('tag') && 
-                    !e.target.classList.contains('blog-date') &&
-                    !e.target.classList.contains('blog-read-time') &&
-                    !e.target.classList.contains('blog-icon')) {
-                    window.location.href = link.href;
+            // 2. Adicionar classe 'active' ao botão clicado
+            this.classList.add('active');
+            
+            // 3. Obter a categoria selecionada
+            const selectedCategory = this.getAttribute('data-category');
+            
+            // 4. Filtrar os cards
+            blogCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                
+                // Resetar animação para acontecer de novo ao filtrar
+                card.classList.remove('reveal-up', 'active');
+                void card.offsetWidth; // Forçar reflow (reiniciar CSS animation)
+                card.classList.add('reveal-up');
+
+                if (selectedCategory === 'all' || cardCategory === selectedCategory) {
+                    card.style.display = 'flex'; // Mostrar card
+                    setTimeout(() => card.classList.add('active'), 50); // Animar entrada
+                } else {
+                    card.style.display = 'none'; // Esconder card
                 }
             });
-            
-            // Manter o hover no link do título
-            link.addEventListener('click', function(e) {
-                e.stopPropagation(); // Impede que o evento do card seja acionado
-            });
-        }
+        });
     });
 }
 
-// Adicione esta chamada no DOMContentLoaded
-document.addEventListener('DOMContentLoaded', function() {
-    // ... outras inicializações
-    initBlogCardClicks();
-});
+// =========================================
+// 2. Busca em Tempo Real no Blog
+// =========================================
+function initBlogSearch() {
+    const searchInput = document.getElementById('blog-search-input');
+    const blogCards = document.querySelectorAll('.blog-card');
 
-/* =========================================
-   NOVAS FUNCIONALIDADES - INTERATIVIDADE
-   (Adicionar ao final do arquivo)
-   ========================================= */
+    if (!searchInput) return;
 
-document.addEventListener('DOMContentLoaded', function() {
-    initModernScrollReveal();
-    init3DTiltEffect();
-});
+    searchInput.addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
 
-// 1. Sistema Avançado de Scroll Reveal
+        blogCards.forEach(card => {
+            const title = card.querySelector('.blog-title').textContent.toLowerCase();
+            const excerpt = card.querySelector('.blog-excerpt').textContent.toLowerCase();
+            const isVisible = title.includes(searchTerm) || excerpt.includes(searchTerm);
+
+            if (isVisible) {
+                card.style.display = 'flex';
+                setTimeout(() => card.classList.add('active'), 50);
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+}
+
+// =========================================
+// 3. Animações de Scroll (Reveal)
+// =========================================
 function initModernScrollReveal() {
     const reveals = document.querySelectorAll('.reveal-up');
     
@@ -838,41 +719,119 @@ function initModernScrollReveal() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                // Opcional: Parar de observar após animar uma vez
-                // revealObserver.unobserve(entry.target); 
             }
         });
     }, {
-        threshold: 0.15, // Aciona quando 15% do elemento está visível
-        rootMargin: "0px 0px -50px 0px"
+        threshold: 0.1,
+        rootMargin: "0px 0px -30px 0px"
     });
 
     reveals.forEach(element => revealObserver.observe(element));
 }
 
-// 2. Efeito de Tilt 3D (Inclinação) nos Cards
+// =========================================
+// 4. Efeito 3D Tilt nos Cards (Glassmorphism)
+// =========================================
 function init3DTiltEffect() {
-    const cards = document.querySelectorAll('.card-modern');
+    // Aplica apenas em dispositivos não-touch para performance
+    if (window.matchMedia("(hover: hover)").matches) {
+        const cards = document.querySelectorAll('.card-modern');
 
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            // Calcular rotação baseada na posição do mouse
-            const xPct = x / rect.width;
-            const yPct = y / rect.height;
-            
-            const xRotation = (yPct - 0.5) * 10; // -5 a +5 graus (Invertido para tilt natural)
-            const yRotation = (xPct - 0.5) * -10; // -5 a +5 graus
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const xPct = x / rect.width;
+                const yPct = y / rect.height;
+                
+                const xRotation = (yPct - 0.5) * 10; 
+                const yRotation = (xPct - 0.5) * -10;
 
-            card.style.transform = `perspective(1000px) rotateX(${xRotation}deg) rotateY(${yRotation}deg) scale3d(1.02, 1.02, 1.02)`;
+                card.style.transform = `perspective(1000px) rotateX(${xRotation}deg) rotateY(${yRotation}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            });
         });
+    }
+}
 
-        card.addEventListener('mouseleave', () => {
-            // Reseta a posição suavemente
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+// =========================================
+// 5. Funcionalidades Básicas (Menu, Scroll)
+// =========================================
+
+function initMobileMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    }
+}
+
+function initHeaderScroll() {
+    const header = document.querySelector('.header');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll <= 0) {
+            header.classList.remove('scroll-up');
+            return;
+        }
+        
+        if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
+            // Descendo
+            header.classList.remove('scroll-up');
+            header.classList.add('scroll-down');
+            header.style.transform = 'translateY(-100%)';
+        } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) {
+            // Subindo
+            header.classList.remove('scroll-down');
+            header.classList.add('scroll-up');
+            header.style.transform = 'translateY(0)';
+            header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+        }
+        lastScroll = currentScroll;
+    });
+}
+
+function initSmoothScrolling() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
     });
 }
+
+// =========================================
+// 6. Interatividade dos Cards do Blog
+// =========================================
+// Garante que o clique no card leve ao link
+document.querySelectorAll('.blog-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+        // Evita duplicidade se clicar direto no link a
+        if (e.target.tagName !== 'A') {
+            const link = this.querySelector('a');
+            if (link) window.location.href = link.href;
+        }
+    });
+});
