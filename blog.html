@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - MoviLink</title>
-    <link rel="icon" type="imagens/x-icon" href=logo.png>
+    <link rel="icon" type="image/x-icon" href="logo.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -13,23 +13,16 @@
         <nav class="navbar">
             <div class="nav-container">
                 <div class="nav-logo">
-                <a href="index.html">
-                    <img src="logo.png" alt="MoviLink Logo" class="logo-image">
-                    <h1>MoviLink</h1>
+                    <a href="index.html">
+                        <img src="logo.png" alt="MoviLink Logo" class="logo-image">
+                        <h1>MoviLink</h1>
+                    </a>
                 </div>
                 <ul class="nav-menu">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link">Início</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="sobre.html" class="nav-link">Sobre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="blog.html" class="nav-link active">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="equipe.html" class="nav-link">Equipe</a>
-                    </li>
+                    <li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a href="sobre.html" class="nav-link">Sobre</a></li>
+                    <li class="nav-item"><a href="blog.html" class="nav-link active">Blog</a></li>
+                    <li class="nav-item"><a href="equipe.html" class="nav-link">Equipe</a></li>
                 </ul>
                 <div class="hamburger">
                     <span class="bar"></span>
@@ -41,234 +34,190 @@
     </header>
 
     <main>
-        <section class="page-hero">
-            <div class="container">
-                <h1 class="page-title">Blog MoviLink</h1>
-                <p class="page-subtitle">Conteúdos educativos sobre logística de forma clara e acessível</p>
+        <!-- Hero Moderno -->
+        <section class="page-hero hero-modern">
+            <div class="hero-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+            </div>
+            <div class="container" style="position: relative; z-index: 2;">
+                <h1 class="page-title reveal-up">Blog MoviLink</h1>
+                <p class="page-subtitle reveal-up stagger-1">Conteúdos educativos sobre logística de forma clara e acessível</p>
+                
+                <!-- Barra de Pesquisa -->
+                <div class="blog-search-container reveal-up stagger-2" style="max-width: 500px; margin: 30px auto 0;">
+                    <input type="text" id="blog-search-input" placeholder="Buscar artigos..." style="width: 100%; padding: 12px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.5); background: rgba(255,255,255,0.9); backdrop-filter: blur(5px); font-size: 1rem; outline: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                </div>
             </div>
         </section>
 
         <section class="blog-content">
             <div class="container">
-                <div class="blog-filters">
-                    <h3>Categorias</h3>
-                    <div class="filter-buttons">
+                <div class="blog-filters reveal-up">
+                    <h3 style="text-align: center; margin-bottom: 20px;">Filtrar por Categoria</h3>
+                    <div class="filter-buttons" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; flex-direction: row;">
                         <button class="filter-btn active" data-category="all">Todos</button>
                         <button class="filter-btn" data-category="conceitos">Conceitos</button>
                         <button class="filter-btn" data-category="metodologias">Metodologias</button>
                         <button class="filter-btn" data-category="ferramentas">Ferramentas</button>
+                        <button class="filter-btn" data-category="operacoes">Operações</button>
                     </div>
                 </div>
                 
-                <!-- Blog Grid completo atualizado -->
-<div class="blog-grid">
-    <!-- Logística Integrada -->
-    <article class="blog-card" data-category="conceitos">
-        <img src="imagens/logistiticainte.jpeg" alt="Logística Integrada" class="blog-card-image">
-        <div class="blog-card-header">
-            <span class="blog-category">Conceitos</span>
-            <div class="blog-icon">🔗</div>
-        </div>
-        <div class="blog-card-content">
-            <h3 class="blog-title"><a href="logistica-integrada.html">Logística Integrada: Unindo Todos os Processos</a></h3>
-            <p class="blog-excerpt">Descubra como a logística integrada pode revolucionar a eficiência da sua empresa, conectando todos os processos desde a fabricação até a entrega final.</p>
-            <div class="blog-meta">
-                <span class="blog-date">15 de Dezembro, 2024</span>
-                <span class="blog-read-time">5 min de leitura</span>
-            </div>
-            <div class="blog-tags">
-                <span class="tag">Integração</span>
-                <span class="tag">Eficiência</span>
-                <span class="tag">Processos</span>
-            </div>
-        </div>
-    </article>
-
-    <!-- Just in Time -->
-    <article class="blog-card" data-category="metodologias">
-        <img src="imagens/justinintime.jpeg" alt="Just in Time" class="blog-card-image">
-        <div class="blog-card-header">
-            <span class="blog-category">Metodologias</span>
-            <div class="blog-icon">⏰</div>
-        </div>
-        <div class="blog-card-content">
-            <h3 class="blog-title"><a href="just-in-time.html">Just in Time: Produção no Momento Certo</a></h3>
-            <p class="blog-excerpt">Entenda como o sistema JIT revolucionou a indústria mundial, reduzindo estoques e aumentando a eficiência operacional.</p>
-            <div class="blog-meta">
-                <span class="blog-date">12 de Dezembro, 2024</span>
-                <span class="blog-read-time">7 min de leitura</span>
-            </div>
-            <div class="blog-tags">
-                <span class="tag">JIT</span>
-                <span class="tag">Toyota</span>
-                <span class="tag">Estoque</span>
-            </div>
-        </div>
-    </article>
-
-    <!-- Kanban -->
-    <article class="blog-card" data-category="ferramentas">
-        <img src="imagens/kanban.jpeg" alt="Kanban" class="blog-card-image">
-        <div class="blog-card-header">
-            <span class="blog-category">Ferramentas</span>
-            <div class="blog-icon">📋</div>
-        </div>
-        <div class="blog-card-content">
-            <h3 class="blog-title"><a href="kanban.html">Kanban: Visualizando o Fluxo de Trabalho</a></h3>
-            <p class="blog-excerpt">Aprenda a implementar o sistema Kanban para gerenciar projetos de forma visual e identificar gargalos no processo.</p>
-            <div class="blog-meta">
-                <span class="blog-date">10 de Dezembro, 2024</span>
-                <span class="blog-read-time">6 min de leitura</span>
-            </div>
-            <div class="blog-tags">
-                <span class="tag">Kanban</span>
-                <span class="tag">Visual</span>
-                <span class="tag">Gestão</span>
-            </div>
-        </div>
-    </article>
-
-    <!-- Kaizen -->
-    <article class="blog-card" data-category="metodologias">
-        <img src="imagens/kaizen.jpeg" alt="Kaizen" class="blog-card-image">
-        <div class="blog-card-header">
-            <span class="blog-category">Metodologias</span>
-            <div class="blog-icon">📈</div>
-        </div>
-        <div class="blog-card-content">
-            <h3 class="blog-title"><a href="kaizen.html">Kaizen: A Filosofia da Melhoria Contínua</a></h3>
-            <p class="blog-excerpt">Explore como a filosofia Kaizen pode transformar sua organização através de pequenas melhorias constantes e envolvimento de todos.</p>
-            <div class="blog-meta">
-                <span class="blog-date">8 de Dezembro, 2024</span>
-                <span class="blog-read-time">8 min de leitura</span>
-            </div>
-            <div class="blog-tags">
-                <span class="tag">Kaizen</span>
-                <span class="tag">Melhoria</span>
-                <span class="tag">Cultura</span>
-            </div>
-        </div>
-    </article>
-
-    <!-- 5S -->
-    <article class="blog-card" data-category="ferramentas">
-        <img src="imagens/5s.jpeg" alt="5S" class="blog-card-image">
-        <div class="blog-card-header">
-            <span class="blog-category">Ferramentas</span>
-            <div class="blog-icon">🧹</div>
-        </div>
-        <div class="blog-card-content">
-            <h3 class="blog-title"><a href="5s.html">5S: Organizando o Ambiente de Trabalho</a></h3>
-            <p class="blog-excerpt">Descubra como a metodologia 5S pode transformar seu ambiente de trabalho, aumentando produtividade e qualidade.</p>
-            <div class="blog-meta">
-                <span class="blog-date">5 de Dezembro, 2024</span>
-                <span class="blog-read-time">6 min de leitura</span>
-            </div>
-            <div class="blog-tags">
-                <span class="tag">5S</span>
-                <span class="tag">Organização</span>
-                <span class="tag">Produtividade</span>
-            </div>
-        </div>
-    </article>
-
-    <!-- Cadeia de Suprimentos -->
-    <article class="blog-card" data-category="conceitos">
-        <img src="imagens/cadeiadesuprimentos.jpeg" alt="Cadeia de Suprimentos" class="blog-card-image">
-        <div class="blog-card-header">
-            <span class="blog-category">Conceitos</span>
-            <div class="blog-icon">📦</div>
-        </div>
-        <div class="blog-card-content">
-            <h3 class="blog-title"><a href="Cadeia_de_Suprimentos.html">Cadeia de Suprimentos: Conceitos Fundamentais</a></h3>
-            <p class="blog-excerpt">Compreenda a rede interconectada de organizações e processos que movem produtos do fornecedor ao cliente final.</p>
-            <div class="blog-meta">
-                <span class="blog-date">20 de Dezembro, 2024</span>
-                <span class="blog-read-time">8 min de leitura</span>
-            </div>
-            <div class="blog-tags">
-                <span class="tag">SCM</span>
-                <span class="tag">Suprimentos</span>
-                <span class="tag">Logística</span>
-            </div>
-        </div>
-    </article>
-
-    <!-- Compras Estratégicas -->
-    <article class="blog-card" data-category="conceitos">
-        <img src="imagens/compras.jpeg" alt="Compras Estratégicas" class="blog-card-image">
-        <div class="blog-card-header">
-            <span class="blog-category">Conceitos</span>
-            <div class="blog-icon">💰</div>
-        </div>
-        <div class="blog-card-content">
-            <h3 class="blog-title"><a href="compras.html">Compras Estratégicas: Do Operacional ao Estratégico</a></h3>
-            <p class="blog-excerpt">Descubra como a área de compras evoluiu para se tornar um pilar estratégico fundamental nas organizações.</p>
-            <div class="blog-meta">
-                <span class="blog-date">18 de Dezembro, 2024</span>
-                <span class="blog-read-time">10 min de leitura</span>
-            </div>
-            <div class="blog-tags">
-                <span class="tag">Compras</span>
-                <span class="tag">Estratégia</span>
-                <span class="tag">Fornecedores</span>
-            </div>
-        </div>
-    </article>
-
-    <!-- Recebimento de Materiais -->
-    <article class="blog-card" data-category="operacoes">
-        <img src="imagens/recebimento.jpeg" alt="Recebimento de Materiais" class="blog-card-image">
-        <div class="blog-card-header">
-            <span class="blog-category">Operações</span>
-            <div class="blog-icon">📦</div>
-        </div>
-        <div class="blog-card-content">
-            <h3 class="blog-title"><a href="recebimentos_materiais.html">Recebimento de Materiais: Elimine o "Achismo"</a></h3>
-            <p class="blog-excerpt">Chega de "achismo" e café frio! Transforme seu recebimento de mercadorias em um espetáculo de produtividade com nossas dicas práticas.</p>
-            <div class="blog-meta">
-                <span class="blog-date">25 de Dezembro, 2024</span>
-                <span class="blog-read-time">10 min de leitura</span>
-            </div>
-            <div class="blog-tags">
-                <span class="tag">Recebimento</span>
-                <span class="tag">CD</span>
-                <span class="tag">Conferência</span>
-            </div>
-        </div>
-    </article>
-</div>
-                <div class="blog-sidebar">
-                    <div class="sidebar-widget">
-                        <h4>Conteúdos Populares</h4>
-                        <ul class="popular-posts">
-                            <li><a href="just-in-time.html">Just in Time: Produção no Momento Certo</a></li>
-                            <li><a href="kanban.html">Kanban: Visualizando o Fluxo de Trabalho</a></li>
-                            <li><a href="logistica-integrada.html">Logística Integrada: Unindo Todos os Processos</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="sidebar-widget">
-                        <h4>Formatos de Conteúdo</h4>
-                        <div class="content-formats">
-                            <div class="format-item">
-                                <span class="format-icon">📝</span>
-                                <span>Artigos</span>
-                            </div>
-                            <div class="format-item">
-                                <span class="format-icon">🎥</span>
-                                <span>Vídeos</span>
-                            </div>
-                            <div class="format-item">
-                                <span class="format-icon">🗺️</span>
-                                <span>Mapas Mentais</span>
-                            </div>
-                            <div class="format-item">
-                                <span class="format-icon">🎧</span>
-                                <span>Podcasts</span>
+                <div class="blog-grid" id="blog-posts-container">
+                    
+                    <!-- NOVO CARD: Gestão de Estoque (FIFO, FEFO, LIFO) -->
+                    <article class="blog-card reveal-up stagger-1" data-category="operacoes" onclick="window.location.href='gestao-estoque.html'">
+                        <img src="imagens/gestao-estoque.jpeg" onerror="this.src='https://placehold.co/600x400/0A66C2/ffffff?text=Gestão+de+Estoque'" alt="Gestão de Estoque" class="blog-card-image">
+                        <div class="blog-card-header">
+                            <span class="blog-category">Operações</span>
+                            <div class="blog-icon">📊</div>
+                        </div>
+                        <div class="blog-card-content">
+                            <h3 class="blog-title"><a href="gestao-estoque.html">Gestão de Estoque: FIFO, FEFO e LIFO</a></h3>
+                            <p class="blog-excerpt">Entenda as diferenças cruciais entre os métodos de gestão para otimizar seu fluxo.</p>
+                            <div class="blog-meta">
+                                <span class="blog-date">26 Nov 2025</span>
+                                <span class="blog-read-time">6 min</span>
                             </div>
                         </div>
-                    </div>
+                    </article>
+
+                    <!-- Logística Integrada -->
+                    <article class="blog-card reveal-up stagger-2" data-category="conceitos" onclick="window.location.href='logistica-integrada.html'">
+                        <img src="imagens/logistiticainte.jpeg" alt="Logística Integrada" class="blog-card-image">
+                        <div class="blog-card-header">
+                            <span class="blog-category">Conceitos</span>
+                            <div class="blog-icon">🔗</div>
+                        </div>
+                        <div class="blog-card-content">
+                            <h3 class="blog-title"><a href="logistica-integrada.html">Logística Integrada</a></h3>
+                            <p class="blog-excerpt">Unindo todos os processos desde a fabricação até a entrega final.</p>
+                            <div class="blog-meta">
+                                <span class="blog-date">15 Dez 2024</span>
+                                <span class="blog-read-time">5 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Just in Time -->
+                    <article class="blog-card reveal-up stagger-3" data-category="metodologias" onclick="window.location.href='just-in-time.html'">
+                        <img src="imagens/justinintime.jpeg" alt="Just in Time" class="blog-card-image">
+                        <div class="blog-card-header">
+                            <span class="blog-category">Metodologias</span>
+                            <div class="blog-icon">⏰</div>
+                        </div>
+                        <div class="blog-card-content">
+                            <h3 class="blog-title"><a href="just-in-time.html">Just in Time</a></h3>
+                            <p class="blog-excerpt">Produção no momento certo, reduzindo estoques e custos.</p>
+                            <div class="blog-meta">
+                                <span class="blog-date">12 Dez 2024</span>
+                                <span class="blog-read-time">7 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Kanban -->
+                    <article class="blog-card reveal-up stagger-1" data-category="ferramentas" onclick="window.location.href='kanban.html'">
+                        <img src="imagens/kanban.jpeg" alt="Kanban" class="blog-card-image">
+                        <div class="blog-card-header">
+                            <span class="blog-category">Ferramentas</span>
+                            <div class="blog-icon">📋</div>
+                        </div>
+                        <div class="blog-card-content">
+                            <h3 class="blog-title"><a href="kanban.html">Kanban</a></h3>
+                            <p class="blog-excerpt">Visualizando o fluxo de trabalho para identificar gargalos.</p>
+                            <div class="blog-meta">
+                                <span class="blog-date">10 Dez 2024</span>
+                                <span class="blog-read-time">6 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Kaizen -->
+                    <article class="blog-card reveal-up stagger-2" data-category="metodologias" onclick="window.location.href='kaizen.html'">
+                        <img src="imagens/kaizen.jpeg" alt="Kaizen" class="blog-card-image">
+                        <div class="blog-card-header">
+                            <span class="blog-category">Metodologias</span>
+                            <div class="blog-icon">📈</div>
+                        </div>
+                        <div class="blog-card-content">
+                            <h3 class="blog-title"><a href="kaizen.html">Kaizen</a></h3>
+                            <p class="blog-excerpt">A filosofia da melhoria contínua na organização.</p>
+                            <div class="blog-meta">
+                                <span class="blog-date">8 Dez 2024</span>
+                                <span class="blog-read-time">8 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 5S -->
+                    <article class="blog-card reveal-up stagger-3" data-category="ferramentas" onclick="window.location.href='5s.html'">
+                        <img src="imagens/5s.jpeg" alt="5S" class="blog-card-image">
+                        <div class="blog-card-header">
+                            <span class="blog-category">Ferramentas</span>
+                            <div class="blog-icon">🧹</div>
+                        </div>
+                        <div class="blog-card-content">
+                            <h3 class="blog-title"><a href="5s.html">5S</a></h3>
+                            <p class="blog-excerpt">Organizando o ambiente de trabalho para produtividade.</p>
+                            <div class="blog-meta">
+                                <span class="blog-date">5 Dez 2024</span>
+                                <span class="blog-read-time">6 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Cadeia de Suprimentos -->
+                    <article class="blog-card reveal-up stagger-1" data-category="conceitos" onclick="window.location.href='Cadeia_de_Suprimentos.html'">
+                        <img src="imagens/cadeiadesuprimentos.jpeg" alt="Cadeia de Suprimentos" class="blog-card-image">
+                        <div class="blog-card-header">
+                            <span class="blog-category">Conceitos</span>
+                            <div class="blog-icon">📦</div>
+                        </div>
+                        <div class="blog-card-content">
+                            <h3 class="blog-title"><a href="Cadeia_de_Suprimentos.html">Cadeia de Suprimentos</a></h3>
+                            <p class="blog-excerpt">Rede interconectada que move produtos do fornecedor ao cliente.</p>
+                            <div class="blog-meta">
+                                <span class="blog-date">20 Dez 2024</span>
+                                <span class="blog-read-time">8 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Compras -->
+                    <article class="blog-card reveal-up stagger-2" data-category="conceitos" onclick="window.location.href='compras.html'">
+                        <img src="imagens/compras.jpeg" alt="Compras" class="blog-card-image">
+                        <div class="blog-card-header">
+                            <span class="blog-category">Conceitos</span>
+                            <div class="blog-icon">💰</div>
+                        </div>
+                        <div class="blog-card-content">
+                            <h3 class="blog-title"><a href="compras.html">Compras Estratégicas</a></h3>
+                            <p class="blog-excerpt">Do Operacional ao Estratégico.</p>
+                            <div class="blog-meta">
+                                <span class="blog-date">18 Dez 2024</span>
+                                <span class="blog-read-time">10 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Recebimento -->
+                    <article class="blog-card reveal-up stagger-3" data-category="operacoes" onclick="window.location.href='recebimentos_materiais.html'">
+                        <img src="imagens/recebimento.jpeg" alt="Recebimento" class="blog-card-image">
+                        <div class="blog-card-header">
+                            <span class="blog-category">Operações</span>
+                            <div class="blog-icon">📦</div>
+                        </div>
+                        <div class="blog-card-content">
+                            <h3 class="blog-title"><a href="recebimentos_materiais.html">Recebimento de Materiais</a></h3>
+                            <p class="blog-excerpt">Elimine o "Achismo" e aumente a produtividade.</p>
+                            <div class="blog-meta">
+                                <span class="blog-date">25 Dez 2024</span>
+                                <span class="blog-read-time">10 min</span>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -307,19 +256,13 @@
         </div>
     </footer>
     
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
+    <script src="hamburguer.js"></script>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
 </body>
 </html>
-
-
-
-<div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-        <div class="vw-plugin-top-wrapper"></div>
-    </div>
-</div>
-<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-<script>
-    new window.VLibras.Widget ( 'https://vlibras.gov.br/app' );
-</script>
